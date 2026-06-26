@@ -340,7 +340,11 @@ Click on the node to open its configuration panel.
 
 > **Rename:** `Eligibility Check`
 
+<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/d9eb3f04-36c2-4eb6-b923-813d2f039c1b" />
+
 **Logic block code** — paste this Python code:
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/9ee3b9f8-15f6-4b49-92eb-cb858fd5fe61" />
 
 ```python
 # ---- Pull extracted fields from the two upstream document extractor nodes ----
@@ -440,6 +444,7 @@ self.output.reason = reason
 |---|---|---|
 | `status` | string | Final eligibility status (PASS or FAIL) |
 | `reason` | string | Reason for approval or rejection |
+
 
 ---
 
