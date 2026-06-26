@@ -1,0 +1,5 @@
+tier,plan_name,min_salary_aed,rental_aed,credit_limit_aed
+1,Smart 55,4000,55,500
+2,Smart 150,6000,150,1200
+3,Smart 350,10000,350,2500
+4,Smart 500+,15000,500,4000
