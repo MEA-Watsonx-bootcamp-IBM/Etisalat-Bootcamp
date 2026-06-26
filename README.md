@@ -445,6 +445,10 @@ self.output.reason = reason
 | `status` | string | Final eligibility status (PASS or FAIL) |
 | `reason` | string | Reason for approval or rejection |
 
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/9fb2ebe8-0c42-4e50-81c3-d1bf34eccf55" />
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/c6a217f9-0090-4d69-92f9-9369c058f138" />
+
 
 ---
 
