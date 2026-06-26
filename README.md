@@ -156,6 +156,8 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 ```
 ☰ Hamburger menu → Build → Create Agent → From scratch
 ```
+<img width="1325" height="761" alt="image" src="https://github.com/user-attachments/assets/81257616-56a0-40b8-9ef4-fa8937218d4f" />
+<img width="1336" height="759" alt="image" src="https://github.com/user-attachments/assets/2c7784c5-890d-445c-b5dc-4559231f9997" />
 
 | Field | Value |
 |---|---|
@@ -165,6 +167,7 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 Click **Create**.
 
 Under **Style** select `Default`.
+<img width="468" height="408" alt="image" src="https://github.com/user-attachments/assets/95e27da2-61d0-4668-9d2c-26d47f3c55eb" />
 
 ---
 
@@ -190,6 +193,7 @@ If eligibility status is FAIL:
 Do not retrieve plans.
 Only explain the rejection reason.
 ```
+<img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
 
 ---
 
