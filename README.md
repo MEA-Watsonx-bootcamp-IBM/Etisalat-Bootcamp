@@ -156,6 +156,7 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 ```
 ☰ Hamburger menu → Build → Create Agent → From scratch
 ```
+
 <img width="1325" height="761" alt="image" src="https://github.com/user-attachments/assets/81257616-56a0-40b8-9ef4-fa8937218d4f" />
 <img width="1336" height="759" alt="image" src="https://github.com/user-attachments/assets/2c7784c5-890d-445c-b5dc-4559231f9997" />
 
@@ -167,6 +168,7 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 Click **Create**.
 
 Under **Style** select `Default`.
+
 <img width="468" height="408" alt="image" src="https://github.com/user-attachments/assets/95e27da2-61d0-4668-9d2c-26d47f3c55eb" />
 
 ---
@@ -193,6 +195,7 @@ If eligibility status is FAIL:
 Do not retrieve plans.
 Only explain the rejection reason.
 ```
+
 <img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
 
 ---
@@ -200,6 +203,9 @@ Only explain the rejection reason.
 ### 1.3 Create the Agentic Workflow
 
 Click the **Toolset** tab on the right side menu → Click **Add tool** → Select **Agentic Workflow**.
+
+<img width="468" height="420" alt="image" src="https://github.com/user-attachments/assets/a600fb02-69be-45ca-8a5d-bfabeece3335" />
+<img width="1188" height="757" alt="image" src="https://github.com/user-attachments/assets/3fc0fab4-fce3-4997-99b3-807f2943f64b" />
 
 When prompted, enter a name for the workflow:
 
@@ -220,11 +226,18 @@ Click **start building**. This opens the workflow canvas.
 
 Click **+** on the arrow between START and END → select **Collect from user → Upload file**
 
+<img width="1317" height="713" alt="image" src="https://github.com/user-attachments/assets/5369bbce-0902-4928-844e-d4a3a05a8b04" />
+
 > **Rename:** Click the **pencil icon** (top-left of node) → type `Emirates ID`
+
+<img width="468" height="289" alt="image" src="https://github.com/user-attachments/assets/2ebabfe8-a5f4-4c81-ae90-9f6dea867921" />
 
 Similarly add 1 more node after the previous node by clicking **+**, Label it `Payslip`
 
 It should now look like this with two upload nodes:
+
+<img width="468" height="619" alt="image" src="https://github.com/user-attachments/assets/a80414d0-52e0-46fc-9908-2682d8e5fdef" />
+
 
 | Label |
 |---|
@@ -239,15 +252,21 @@ It should now look like this with two upload nodes:
 
 Click **+** on the arrow between Node 1 and END → select **Add a flow activity → Document extractor**
 
+<img width="440" height="267" alt="image" src="https://github.com/user-attachments/assets/9d1b65a2-f901-4a38-8237-7d85b498fcf0" />
+
 Click on the node to open its configuration panel.
 
 When prompted, select document type: `Unstructured`
+
+<img width="438" height="285" alt="image" src="https://github.com/user-attachments/assets/0da8020e-9f02-4e87-8f4e-4d55a770db59" />
 
 > **Rename:** Click the **pencil icon** (top-left of node) → type `Extract emirates ID fields`
 >
 > **Change model:** Click the model selector (top-right of node) → select `gpt-oss-120b`
 
 Drag and drop the training Emirates ID file `EID_Train.png` into the document upload area of the node.
+
+<img width="468" height="274" alt="image" src="https://github.com/user-attachments/assets/fdd034e8-2002-4160-a3d2-d425dcdc272c" />
 
 > This is the training document.
 
@@ -261,6 +280,10 @@ Click **Add field** and add these fields:
 | `Nationality` | string | Extract the card holder's nationality from the Emirates ID. Look for the label "Nationality" or "الجنسية". Return only the nationality value, not the label. The value may be a country name such as United Arab Emirates, Saudi Arabia, India, Pakistan, Egypt, Philippines, Jordan, Syria, or another nationality. If both English and Arabic are shown, return the English nationality. |
 | `Expiry Date` | date | Extract the expiry date of the Emirates ID exactly as shown on the card. This field will be used later for eligibility validation. |
 | `Date of Issue` | string | Extract the issue date of the Emirates ID exactly as shown on the card. |
+
+<img width="468" height="258" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
+
+<img width="468" height="261" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
 
 **Map the document source:**
 
@@ -310,6 +333,8 @@ Click **Add field** and add:
 #### Node 5 — Logic Block (Eligibility Check)
 
 Click **+** between Node 4 and END → select **Add a flow activity → Logic block**
+
+<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/1b288b54-ba99-4f07-aded-b18dc4f78677" />
 
 Click on the node to open its configuration panel.
 
