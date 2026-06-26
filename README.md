@@ -460,7 +460,11 @@ Click on the node to open its configuration panel.
 
 > **Rename:** `Generative prompt`
 
+<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/636afa32-e1e6-4b40-a1b3-02dc64455451" />
+
 **Input variables** — click the **Input variables** tab → **Add variable**:
+
+<img width="1299" height="757" alt="image" src="https://github.com/user-attachments/assets/0d307030-ef2b-4798-8a4a-099017c13810" />
 
 | Variable name | Type |
 |---|---|
@@ -522,6 +526,8 @@ Return only this structure and nothing else:
 }
 ```
 
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/e144b6a6-85a0-4008-9c25-ebde9b77c169" />
+
 **Data Mapping:**
 
 1. Click **X** (top-right of the panel) to close it
@@ -567,6 +573,8 @@ Generative prompt  (Package Output)
   ▼
 END
 ```
+
+<img width="355" height="648" alt="image" src="https://github.com/user-attachments/assets/814df0b2-d282-419c-ace1-c80288818d4c" />
 
 ---
 
