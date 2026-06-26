@@ -875,6 +875,8 @@ Verify the tool was imported — go to your browser:
 
 If `create_payment_link` appears in the list, the tool is ready. ✅
 
+<img width="468" height="234" alt="image" src="https://github.com/user-attachments/assets/ce277f5e-b9f7-47a7-b33e-46fd4f513206" />
+
 ---
 
 ### 2.4 Add the Tool in the UI
@@ -1029,6 +1031,7 @@ On the Master Agent page, click the **refresh button** on the top left of the ag
 ```
 Check my postpaid plan eligibility
 ```
+<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/92ce842a-acca-48e2-b305-df498a2675df" />
 
 > Using training documents: `EID_Train.png` + `Payslip_Train.png`
 
