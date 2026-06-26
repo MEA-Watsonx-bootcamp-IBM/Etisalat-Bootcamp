@@ -602,7 +602,13 @@ This file contains the postpaid plan tiers with their eligibility requirements:
 
 While still on the document_agent page, click the **Toolset** tab on the left side menu → scroll down to **Knowledge** section → **Add source** → select **New knowledge**.
 
+<img width="466" height="333" alt="image" src="https://github.com/user-attachments/assets/061b73e6-6d5f-44a6-b5c2-1a9bf2abf3ef" />
+
+<img width="458" height="224" alt="image" src="https://github.com/user-attachments/assets/d764ccae-b569-4c2a-aad7-c1d3563d2e00" />
+
 Scroll down and choose **Upload files** → click **Next**.
+
+<img width="458" height="230" alt="image" src="https://github.com/user-attachments/assets/f7a780cc-98ae-47d6-8ffb-cecf89764464" />
 
 Drag and drop the `plans.csv` file you downloaded into the upload area → click **Next**.
 
