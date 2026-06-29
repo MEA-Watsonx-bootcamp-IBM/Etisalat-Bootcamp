@@ -8,6 +8,44 @@
 
 ---
 
+## Use Case Overview
+
+Telecom operators process thousands of postpaid plan applications every
+month. Today this usually means a customer submits a national ID and a
+recent payslip, then waits while a back-office team manually checks
+identity validity, cross-references the applicant's name across
+documents, verifies income, and decides which plans they qualify for.
+
+This lab builds an AI agent system that automates that process for a
+fictional telecom operator, **Connectel**, end to end — from document
+upload through plan recommendation to payment.
+
+**Who this is for:** customer onboarding, credit risk, and digital
+channel teams at telecom operators looking to move postpaid sign-up
+from manual back-office review into a self-service, real-time
+conversational flow — without losing the underlying compliance checks
+a manual process would normally perform.
+
+**What the system does, end to end:**
+
+1. A customer uploads their national ID and a recent payslip.
+2. The system extracts the relevant fields and runs the same checks a
+   back-office reviewer would: ID validity, a name match across both
+   documents, and a minimum income threshold.
+3. If the applicant doesn't qualify, they get a clear explanation
+   immediately instead of a multi-day wait.
+4. If they qualify, the system returns every plan tier they're eligible
+   for based on income, not just one suggested plan.
+5. Once the customer selects and confirms a plan, the system generates
+   a payment link and sign-up completes in the same conversation.
+
+> **Note:** The plan names, salary thresholds, and credit limit figures
+> used in this lab are illustrative — not a real operator's published
+> rate card. The flow itself reflects a realistic postpaid eligibility
+> and onboarding pattern used across the telecom industry.
+
+---
+
 ## Table of Contents
 
 - [What is watsonx Orchestrate?](#1-what-is-watsonx-orchestrate)
@@ -1009,6 +1047,9 @@ Rules you must always follow:
 - Never make up or assume any information not provided by the user or returned by an agent.
 - Never perform document extraction, eligibility checks, or payment creation yourself — always delegate to the relevant specialist agent.
 - Always be polite and professional throughout.
+
+MANDATORY:
+- Always use the complete raw payment link provided by payment_agent VERBATIM, character for character, with zero substitutions anywhere in the string — including inside the encoded portion after the "#" symbol. Even a single character changed, added, or dropped makes the link non-functional, so there is no acceptable margin of error when reproducing it.
 ```
 
 ---
@@ -1130,7 +1171,15 @@ Use the PASS scenario documents and complete the full flow:
 4. Confirm selection
 5. Receive Stripe payment link
 6. Click the link to open Stripe Checkout
-7. Use test card: `4242 4242 4242 4242`, any future expiry, any CVC
+7. Use the test card details below — these exact values can be used as-is, no need to look up or invent your own:
+
+   > **Test Card Details**
+   >
+   > | Field | Value |
+   > |---|---|
+   > | Card number | `4242 4242 4242 4242` |
+   > | Expiry date | `12/30` |
+   > | CVV | `123` |
 8. Complete test payment
 
 **Expected:** Payment succeeds and redirects to success page.
