@@ -735,7 +735,7 @@ import stripe
 
 stripe.api_key = "sk_test_51Tls7GRriMoAjNdV3T7efWnrIBRQLDuGUEcfXk4oJHQhVAVxjpMv8FDstHZ0qHonFTmqjI9bT5OJ8pwmbnfRmgEj00iPaeMGpY"
 
-SUCCESS_URL = "https://6a3bf686c40af40b0f021c31--dashing-pothos-4e1f45.netlify.app/"
+SUCCESS_URL = "https://6a424363170ac12c6c5a9eab--spontaneous-torrone-aa8529.netlify.app/"
 CANCEL_URL = "https://6a3bf7055d04772eedef4cc0--animated-entremet-8a202b.netlify.app/"
 
 
