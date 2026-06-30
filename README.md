@@ -216,22 +216,23 @@ Under **Style** select `Default`.
 Click the **Behaviour** tab and paste:
 
 ```
-call document_extract_tool.
-
+Call document_extract_tool ALWAYS.
 After the tool finishes, return the complete tool output to the user.
-
 Do not only say the documents were processed.
 Do not summarize unless the tool output is shown.
 Always show the extracted fields and eligibility status.
 
 If eligibility status is PASS:
-Retrieve postpaid plans from the knowledge base.
-Compare the customer salary against each plan minimum salary.
-Return all eligible plans with plan name, rental amount, and credit limit.
+- Retrieve ALL postpaid plans from the knowledge base — do not stop after finding one match.
+- Compare the customer salary against EVERY plan's minimum salary requirement, not just the first one found.
+- Identify every plan where customer salary >= plan minimum salary.
+- Return ALL eligible plans found, not a subset. If 2 or more plans qualify, all of them must be listed — never omit any qualifying plan.
+- For each eligible plan, include: plan name, rental amount, and credit limit.
+- Before responding, count the number of eligible plans found and explicitly state that count (e.g., "3 eligible plans found") to confirm completeness.
 
 If eligibility status is FAIL:
-Do not retrieve plans.
-Only explain the rejection reason.
+- Do not retrieve plans.
+- Only explain the rejection reason.
 ```
 
 <img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
