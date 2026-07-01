@@ -324,7 +324,8 @@ Click **Add field** and add these fields:
 
 <img width="468" height="261" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
 
-**Map the document source:**
+<details>
+<summary> <strong>💡 Optional — Map the document Source (click to expand) </strong> </summary>
 
 1. Click **X** (top-right of the panel) to close it
 2. Click the `Extract emirates ID fields` node again to reopen it
@@ -332,6 +333,8 @@ Click **Add field** and add these fields:
 4. Click **`{x}`** on the `document_ref` field
 5. Under **User activity 1**, select `Emirates ID`
 6. On the right side, select `value`
+
+</details>
 
 ---
 
@@ -358,7 +361,8 @@ Click **Add field** and add:
 | `Employee Name` | string | Extract the employee's full name exactly as written in the payslip, usually found next to the label "Employee Name" or "Name" |
 | `gross salary` | string | Extract the gross salary amount from the payslip exactly as shown next to "Gross Salary". Return only the numeric value without currency symbols or commas. |
 
-**Optional — Map the document source:**
+<details>
+<summary> <strong>💡 Optional — Map the document Source (click to expand) </strong> </summary>
 
 1. Click **X** (top-right of the panel) to close it
 2. Click the `Extract payslip fields` node again to reopen it
@@ -366,6 +370,8 @@ Click **Add field** and add:
 4. Click **`{x}`** on the `document_ref` field
 5. Under **User activity 1**, select `Payslip`
 6. On the right side, select `value`
+
+</details>
 ---
 
 #### Node 5 — Logic Block (Eligibility Check)
