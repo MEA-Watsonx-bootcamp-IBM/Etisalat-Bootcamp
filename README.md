@@ -358,7 +358,7 @@ Click **Add field** and add:
 | `Employee Name` | string | Extract the employee's full name exactly as written in the payslip, usually found next to the label "Employee Name" or "Name" |
 | `gross salary` | string | Extract the gross salary amount from the payslip exactly as shown next to "Gross Salary". Return only the numeric value without currency symbols or commas. |
 
-**Map the document source:**
+**Optional — Map the document source:**
 
 1. Click **X** (top-right of the panel) to close it
 2. Click the `Extract payslip fields` node again to reopen it
@@ -366,7 +366,6 @@ Click **Add field** and add:
 4. Click **`{x}`** on the `document_ref` field
 5. Under **User activity 1**, select `Payslip`
 6. On the right side, select `value`
-
 ---
 
 #### Node 5 — Logic Block (Eligibility Check)
