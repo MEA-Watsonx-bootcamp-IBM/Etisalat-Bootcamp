@@ -658,7 +658,13 @@ Enter the Milvus connection details:
 | GRPC port | `8080` |
 | Username | `root` |
 | Password | `YourStrongPassword123!` |
-| SSL certificate | -----BEGIN CERTIFICATE-----
+|💡 SSL certificate | Paste the provided certificate |
+
+<details>
+<summary><b>💡 SSL Certificate (Click to expand)</b></summary>
+   
+```text
+-----BEGIN CERTIFICATE-----
 MIIDojCCAoqgAwIBAgIUfQBXSJmqkgsZvf89eYCcQ2H7epMwDQYJKoZIhvcNAQEL
 BQAwWDELMAkGA1UEBhMCR0IxGzAZBgNVBAoMEkNsaWVudCBFbmdpbmVlcmluZzES
 MBAGA1UECwwJQVMgYW5kIFBXMRgwFgYDVQQDDA8xNjEuMTU2LjE5OS4xMDEwHhcN
@@ -679,7 +685,9 @@ eTXgHPJoFJquOamIuVAl7jSHzVS8G759clNEch+5fsl388LdjkzPygOBLyg8I8Jn
 QuI2Nqp45KMFnVGybk3Di/DQ3Qv1EYYCPfAqiEKRqm/C0AF3jSerVsNna5DrQvo9
 GmZN7oL7WEzTwqAFYDF/+JXIwaxiML0+bu5LDgeIcJ4Et4Atb5zsUKCUGBx/Bm6R
 RWrrFm6Z2Q5u3KuIlvPmDEQ+cWtFXQ==
------END CERTIFICATE----- |
+-----END CERTIFICATE-----
+```
+</details>
 
 Click **Next**.
 
