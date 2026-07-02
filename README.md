@@ -627,43 +627,106 @@ END
 Click **Done** (top-right) to return to the agent page.
 
 ---
+
 ### 1.6 Add Knowledge Base
 
-Download the plans CSV file from the lab export folder:
-
-```
-Etisalat/knowledge-bases/plans.csv
-```
-
-This file contains the postpaid plan tiers with their eligibility requirements:
-
-| tier | plan_name | min_salary_aed | rental_aed | credit_limit_aed |
-|---|---|---|---|---|
-| 1 | Smart 55 | 4000 | 55 | 500 |
-| 2 | Smart 150 | 6000 | 150 | 1200 |
-| 3 | Smart 350 | 10000 | 350 | 2500 |
-| 4 | Smart 500+ | 15000 | 500 | 4000 |
-
-While still on the document_agent page, click the **Toolset** tab on the left side menu → scroll down to **Knowledge** section → **Add source** → select **New knowledge**.
+While still on the `document_agent` page, click the **Toolset** tab on the left side menu → scroll down to **Knowledge** section → **Add source** → select **New knowledge**.
 
 <img width="466" height="333" alt="image" src="https://github.com/user-attachments/assets/061b73e6-6d5f-44a6-b5c2-1a9bf2abf3ef" />
 
 <img width="458" height="224" alt="image" src="https://github.com/user-attachments/assets/d764ccae-b569-4c2a-aad7-c1d3563d2e00" />
 
-Scroll down and choose **Upload files** → click **Next**.
+---
 
-<img width="458" height="230" alt="image" src="https://github.com/user-attachments/assets/f7a780cc-98ae-47d6-8ffb-cecf89764464" />
+#### Select Source
 
-Drag and drop the `plans.csv` file you downloaded into the upload area → click **Next**.
+Choose **Milvus** as the knowledge source.
+
+Click **Next**.
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/b4a997e2-9219-4b67-9ca7-73177e84e7a3" />
+
+---
+
+#### Connect Milvus
+
+Enter the Milvus connection details:
+
+| Field | Value |
+|---|---|
+| GRPC host | `161.156.199.100` |
+| GRPC port | `8080` |
+| Username | `root` |
+| Password | `YourStrongPassword123!` |
+| SSL certificate | -----BEGIN CERTIFICATE-----
+MIIDojCCAoqgAwIBAgIUfQBXSJmqkgsZvf89eYCcQ2H7epMwDQYJKoZIhvcNAQEL
+BQAwWDELMAkGA1UEBhMCR0IxGzAZBgNVBAoMEkNsaWVudCBFbmdpbmVlcmluZzES
+MBAGA1UECwwJQVMgYW5kIFBXMRgwFgYDVQQDDA8xNjEuMTU2LjE5OS4xMDEwHhcN
+MjYwNzAxMTEzNzAyWhcNMzYwNjI4MTEzNzAyWjBYMQswCQYDVQQGEwJHQjEbMBkG
+A1UECgwSQ2xpZW50IEVuZ2luZWVyaW5nMRIwEAYDVQQLDAlBUyBhbmQgUFcxGDAW
+BgNVBAMMDzE2MS4xNTYuMTk5LjEwMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAJMBSYTKpiQ3vKyrf7DM9fAlSuT04DbVtkOpSxE6PStk9zD/G590Hy7f
+sIwp4HAn1Wmhqm+/REX0+9dlnQSz2t5bfVPnTIcX+kAVNd2b4hKN9Ckblw962Ltu
+1dq4aDYtcyXPUQrK4C8qr4yPSvxTw5T+vIBvCHmejcHzNvtMLeYLuVlNvxf6Dq93
+d18T6iVZ9yzqcwm9+AqImFSM1qjDqukkxd0/ytcMXdnh1FYxnrzONG0EgUiJlqHA
+1gTMAqaZjRDr7FMrf5GWEWe9knmx86aIdoySfJZpzTxFdXbTvIJYvy2iwZcrtwl5
+dw6ZNltdAJZgJNcMYhOrdiO+dEMRLXECAwEAAaNkMGIwHQYDVR0OBBYEFDPWdPwn
+yJFyj5D/RGK4dX3lohn+MB8GA1UdIwQYMBaAFDPWdPwnyJFyj5D/RGK4dX3lohn+
+MA8GA1UdEwEB/wQFMAMBAf8wDwYDVR0RBAgwBocEoZzHZDANBgkqhkiG9w0BAQsF
+AAOCAQEAURZHbiPZuOJBJOEXuBb1h5nTiwBBqleJLrmkjFZr5nE6jFxSZS1htqu0
+BVT8vLnFq1NwRiAZn5jYvkJsEunZCOxmoZIampwAT4MoM4rZwr0/yiylpRzKyFkb
+eTXgHPJoFJquOamIuVAl7jSHzVS8G759clNEch+5fsl388LdjkzPygOBLyg8I8Jn
+QuI2Nqp45KMFnVGybk3Di/DQ3Qv1EYYCPfAqiEKRqm/C0AF3jSerVsNna5DrQvo9
+GmZN7oL7WEzTwqAFYDF/+JXIwaxiML0+bu5LDgeIcJ4Et4Atb5zsUKCUGBx/Bm6R
+RWrrFm6Z2Q5u3KuIlvPmDEQ+cWtFXQ==
+-----END CERTIFICATE----- |
+
+Click **Next**.
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/3e4d12bd-1266-41db-83a6-ec2d58bebc79" />
+
+---
+
+#### Select Index
+
+Configure the index using the following values:
+
+| Field | Value |
+|---|---|
+| Database | `default` |
+| Use Collection or Alias | `Collection` |
+| Collection | `postpaid_plans` |
+| Index | `embedding` |
+| Embedding model | `granite-embedding-278m-multilingual` |
+
+Configure the result content as follows:
+
+| Field | Value |
+|---|---|
+| Title | `plan_name` |
+| Body | `text` |
+| URL | Leave empty |
+
+Click **Next**.
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/73b39b49-4ff4-433e-a631-eaf0eec4ce72" />
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/a8ceb8a8-e55b-4e70-9864-8339ab410186" />
+
+---
+
+#### Knowledge Details
 
 Enter the knowledge base details:
 
 | Field | Value |
 |---|---|
-| Name | `Postpaid Plans Knowledge Base` |
-| Description | This knowledge base contains telecom postpaid plans and their eligibility requirements, including minimum salary thresholds, plan names, monthly fees, benefits, and available tiers. Use this knowledge source after eligibility validation to retrieve all plans the customer qualifies for based on gross salary and return matching plans ranked by eligibility. |
+| Name | `Postpaid plans` |
+| Description | Contains all the costs and criteria for all the postpaid plans. |
 
 Click **Save**.
+
+<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/f6665300-220a-4da7-abde-713c825d72d9" />
 
 ---
 
