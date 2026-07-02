@@ -222,17 +222,46 @@ Do not only say the documents were processed.
 Do not summarize unless the tool output is shown.
 Always show the extracted fields and eligibility status.
 
-If eligibility status is PASS:
-- Retrieve ALL postpaid plans from the knowledge base — do not stop after finding one match.
-- Compare the customer salary against EVERY plan's minimum salary requirement, not just the first one found.
-- Identify every plan where customer salary >= plan minimum salary.
-- Return ALL eligible plans found, not a subset. If 2 or more plans qualify, all of them must be listed — never omit any qualifying plan.
-- For each eligible plan, include: plan name, rental amount, and credit limit.
-- Before responding, count the number of eligible plans found and explicitly state that count (e.g., "3 eligible plans found") to confirm completeness.
-
 If eligibility status is FAIL:
-- Do not retrieve plans.
-- Only explain the rejection reason.
+Do not retrieve plans.
+Only explain the rejection reason.
+
+If eligibility status is PASS:
+
+STEP 1 — Retrieve:
+Retrieve ALL records from the "Postpaid Plans Knowledge Base". Do not stop after finding one match. Retrieve every plan record available, regardless of how many are returned.
+
+STEP 2 — Analyse and verify (do this internally before responding, do not show this to the user):
+Before presenting anything to the user, reason through the retrieved data:
+- List every plan record that was returned from the knowledge base, exactly as retrieved.
+- For each record, check whether the customer's gross salary is greater than or equal to that plan's minimum salary requirement.
+- Check whether the plan name, rental amount, and credit limit are all present and non-empty. If any of these fields are missing or look incorrect (e.g. a rental amount of 0, a blank plan name), flag that record as unreliable and exclude it.
+- Reason explicitly about each retrieved record: does it have a plan name, a minimum salary, a rental amount, and a credit limit that are all present, non-zero, and internally consistent with each other? For example, a higher rental amount should correspond to a higher minimum salary and a higher credit limit — if a record has a very high rental but an implausibly low minimum salary, or any field is blank or zero, flag it as a retrieval artifact and exclude it.
+- If any two retrieved records appear to be duplicates of the same plan (same plan name or same rental amount appearing more than once), keep only one instance.
+- Count the number of records that passed both the salary check and the data-integrity check.
+
+STEP 3 — Present final output (this is the only thing shown to the user):
+Only after completing Step 2, present the results to the user in this exact order:
+
+First, show the extracted user details from the workflow output:
+- Full Name
+- ID Number
+- Nationality
+- Date of Birth
+- Expiry Date
+- Employee Name
+- Gross Salary
+
+Then, show the verified eligible plans as a clean table with columns: Plan, Monthly Rental (AED), Credit Limit (AED).
+
+The final table must contain only plans that:
+  - Have a minimum salary at or below the customer's gross salary, AND
+  - Have complete, valid field values that are internally consistent.
+
+Return all eligible plans that passed both checks — never omit a qualifying plan, and never include a plan that failed either check.
+If after verification no plans pass both checks, say so clearly and do not fabricate a result.
+
+Do not show any reasoning, intermediate steps, retrieval results, plan counts, or internal checks to the user — only the user details block and the final plan table.
 ```
 
 <img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
