@@ -1,10 +1,10 @@
-# Etisalat Postpaid Plan Eligibility Bootcamp
+# Telecom Postpaid Plan Eligibility Bootcamp
 
 **IBM watsonx Orchestrate**
 
 > **Postpaid Plan Eligibility Processing | AI Agent Development Bootcamp**
 >
-> **Goal:** By the end of this lab, you will have built, deployed, and tested an Etisalat Postpaid Plan Eligibility system on watsonx Orchestrate — a 3-agent pipeline that reads Emirates ID and payslip documents, validates eligibility requirements, recommends eligible plan tiers, and processes payment via Stripe.
+> **Goal:** By the end of this lab, you will have built, deployed, and tested an AI Agentic workflow for Postpaid Plan Eligibility Use case on watsonx Orchestrate — a 3-agent pipeline that reads Emirates ID and payslip documents, validates eligibility requirements, recommends eligible plan tiers, and processes payment via Stripe payment gateway.
 
 ---
 
@@ -13,12 +13,12 @@
 Telecom operators process thousands of postpaid plan applications every
 month. Today this usually means a customer submits a national ID and a
 recent payslip, then waits while a back-office team manually checks
-identity validity, cross-references the applicant's name across
+identity validity, cross-references the applicant's details across
 documents, verifies income, and decides which plans they qualify for.
 
-This lab builds an AI agent system that automates that process for a
+This lab builds an AI agentic workflow that automates the process for a
 fictional telecom operator, **Connectel**, end to end — from document
-upload through plan recommendation to payment.
+upload and processing going through plan recommendation to final payment.
 
 **Who this is for:** customer onboarding, credit risk, and digital
 channel teams at telecom operators looking to move postpaid sign-up
@@ -28,21 +28,20 @@ a manual process would normally perform.
 
 **What the system does, end to end:**
 
-1. A customer uploads their national ID and a recent payslip.
-2. The system extracts the relevant fields and runs the same checks a
+1. A customer uploads their Emirates ID and a recent payslip.
+2. The workflow extracts the relevant fields and runs the same checks a
    back-office reviewer would: ID validity, a name match across both
    documents, and a minimum income threshold.
-3. If the applicant doesn't qualify, they get a clear explanation
+3. If the applicant doesn't qualify, they get a clear justification
    immediately instead of a multi-day wait.
 4. If they qualify, the system returns every plan tier they're eligible
    for based on income, not just one suggested plan.
 5. Once the customer selects and confirms a plan, the system generates
-   a payment link and sign-up completes in the same conversation.
+   a payment link and confirms the subscription in the same conversation.
 
 > **Note:** The plan names, salary thresholds, and credit limit figures
 > used in this lab are illustrative — not a real operator's published
-> rate card. The flow itself reflects a realistic postpaid eligibility
-> and onboarding pattern used across the telecom industry.
+> rate card.
 
 ---
 
@@ -85,7 +84,7 @@ IBM watsonx Orchestrate is an open, hybrid enterprise platform for agentic AI. I
 
 ## 2. Architecture Overview
 
-We will build an **Etisalat Postpaid Plan Eligibility System** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
+We will build an **Postpaid Plan Eligibility System** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
 
 ```
 User
@@ -200,7 +199,7 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 
 | Field | Value |
 |---|---|
-| Name | `document_agent` |
+| Name | `document_agent_<your_last_name> (eg: payment_agent_ahmed)`|
 | Description | Extracts structured information from uploaded Emirates ID documents and payslips for postpaid eligibility verification. Reads Emirates ID and extracts full name, ID number, date of birth, expiry date. Reads payslip and extracts employee name, company name, gross salary, pay period. Returns all extracted fields in structured format for downstream eligibility validation. |
 
 Click **Create**.
@@ -778,7 +777,7 @@ Click **Save**.
 
 | Field | Value |
 |---|---|
-| Name | `payment_agent` |
+| Name | `payment_agent_<your_last_name> (eg: payment_agent_ahmed)`|
 | Description | Handles payment collection for a postpaid plan the user has selected. Creates a Stripe test-mode checkout link for the chosen plan's monthly rental amount and shares it with the user to complete payment. |
 
 Click **Create**.
@@ -1043,8 +1042,8 @@ Click the **Toolset** tab on the left side menu → **Add tool** → **Local ins
 
 | Field | Value |
 |---|---|
-| Name | `Postpaid Eligibility Agent` |
-| Description | Helps users check eligibility for Etisalat postpaid plans and complete sign-up. Collects Emirates ID and payslip, verifies identity and income requirements, recommends eligible plan tiers, and processes payment for the plan the user selects. |
+| Name | `Postpaid Eligibility Agent_<your_last_name> (eg: payment_agent_ahmed)`|
+| Description | Helps users check eligibility for postpaid plans and complete sign-up. Collects Emirates ID and payslip, verifies identity and income requirements, recommends eligible plan tiers, and processes payment for the plan the user selects. |
 
 Click **Create**.
 
@@ -1294,7 +1293,7 @@ Use the PASS scenario documents and complete the full flow:
 
 ## 🎉 Congratulations!
 
-You have successfully built and tested a fully functional 3-agent Etisalat Postpaid Plan Eligibility pipeline on IBM watsonx Orchestrate — powered by document extraction, eligibility validation, knowledge base plan lookup, and Stripe payment integration.
+You have successfully built and tested a fully functional 3-agent Postpaid Plan Eligibility pipeline on IBM watsonx Orchestrate — powered by document extraction, eligibility validation, knowledge base plan lookup, and Stripe payment integration.
 
 ### What You Built
 
