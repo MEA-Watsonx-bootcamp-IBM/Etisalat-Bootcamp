@@ -1,4 +1,4 @@
-# Telecom Postpaid Plan Eligibility Bootcamp
+# Etisalat Bootcamp
 
 **IBM watsonx Orchestrate**
 
@@ -51,6 +51,7 @@ a manual process would normally perform.
 - [Architecture Overview](#2-architecture-overview)
 - [What Gets Checked?](#3-what-gets-checked)
 - [Prerequisites](#prerequisites)
+- [Accessing Your Environment](#accessing-your-environment)
 - [Documents](#documents)
 - [Part 1 — Document Agent](#part-1--build-sub-agent-1-document-agent)
 - [Part 2 — Payment Agent](#part-2--build-sub-agent-2-payment-agent)
@@ -150,17 +151,53 @@ If all checks pass, the system retrieves eligible plan tiers from the knowledge 
 
 Before starting, make sure you have:
 
-- **watsonx Orchestrate SaaS environment** — no account? [Provision a free trial here](https://www.ibm.com/account/reg/us-en/signup?formid=urx-52753)
 - **Python 3.11** installed on your machine
 - **VS Code** (or any code editor)
+- **IBM Cloud invitation email** — you should have received this before the session. If not, Check with your instructor before proceeding.
 
-### Get your API key and Service instance URL
+---
 
-1. Log in to your watsonx Orchestrate environment
-2. Click your **Profile icon** (top-right corner)
-3. Click **Settings** → **API details** tab
-4. Click **Generate API key** — copy and save it
-5. Copy the **Service instance URL** shown below
+## Accessing Your Environment
+
+You will receive an invitation email from IBM Cloud to join the bootcamp Orchestrate environment. Follow these steps to get in.
+
+---
+
+### Step 1 — Accept the Invitation
+
+1. Open the invitation email from IBM Cloud (subject: "Action required: You are invited to join an account in IBM Cloud")
+2. Click **Join now**
+3. On the next screen, click **Join Account**
+<img width="1443" height="801" alt="image" src="https://github.com/user-attachments/assets/843dfab5-a57b-4e14-a914-e6864ea7860d" />
+
+> If you already have an IBM ID registered to this email address, log in with it. If not, create a new IBM ID — it only takes a minute.
+
+---
+
+### Step 2 — Launch watsonx Orchestrate
+
+Once you are logged in to IBM Cloud:
+
+1. Click the **☰ hamburger menu** (top-left)
+2. Click **Resource list**
+3. Click **AI / Machine Learning**
+4. Under it, find **Watson Orchestrate** and click it
+5. Click **Launch watsonx Orchestrate**
+<img width="1280" height="483" alt="image" src="https://github.com/user-attachments/assets/f4883e16-a624-4c4f-9f6f-513060e1c367" />
+<img width="1234" height="769" alt="image" src="https://github.com/user-attachments/assets/ac828d6f-f8fd-4d7c-a686-1d7defd921bc" />
+
+This opens your watsonx Orchestrate environment — this is where you will build everything in this lab.
+
+---
+
+### Step 3 — Save Your Credentials
+
+You will need these two values throughout the lab. Save them somewhere accessible before you start.
+
+| Credential | Value |
+|---|---|
+| Service instance URL | `https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/6e6caa21-ebed-463d-8f96-dceeb273ad5a` |
+| API key | `CzG5iHiW8G5CX5AcMPoQRfXrc9IOwJt70HJj49DbEX8S` |
 
 > ⚠️ Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
 
