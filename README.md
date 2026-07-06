@@ -245,7 +245,7 @@ Click **Create**.
 
 Under **Style** select `Default`.
 
-<img width="468" height="408" alt="image" src="https://github.com/user-attachments/assets/95e27da2-61d0-4668-9d2c-26d47f3c55eb" />
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/95e27da2-61d0-4668-9d2c-26d47f3c55eb" />
 
 ---
 
@@ -253,7 +253,7 @@ Under **Style** select `Default`.
 
 Click the **Behaviour** tab and paste:
 
-<img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
 
 ```
 Call document_extract_tool ALWAYS.
@@ -310,7 +310,7 @@ Do not show any reasoning, intermediate steps, retrieval results, plan counts, o
 
 Click the **Toolset** tab on the right side menu → Click **Add tool** → Select **Agentic Workflow**.
 
-<img width="468" height="420" alt="image" src="https://github.com/user-attachments/assets/a600fb02-69be-45ca-8a5d-bfabeece3335" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/a600fb02-69be-45ca-8a5d-bfabeece3335" />
 <img width="1188" height="757" alt="image" src="https://github.com/user-attachments/assets/3fc0fab4-fce3-4997-99b3-807f2943f64b" />
 
 When prompted, enter a name for the workflow:
@@ -336,13 +336,13 @@ Click **+** on the arrow between START and END → select **Collect from user �
 
 > **Rename:** Click the **pencil icon** (top-left of node) → type `Emirates ID`
 
-<img width="468" height="289" alt="image" src="https://github.com/user-attachments/assets/2ebabfe8-a5f4-4c81-ae90-9f6dea867921" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/2ebabfe8-a5f4-4c81-ae90-9f6dea867921" />
 
 Similarly add 1 more node after the previous node by clicking **+**, Label it `Payslip`
 
 It should now look like this with two upload nodes:
 
-<img width="468" height="619" alt="image" src="https://github.com/user-attachments/assets/a80414d0-52e0-46fc-9908-2682d8e5fdef" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/a80414d0-52e0-46fc-9908-2682d8e5fdef" />
 
 
 | Label |
@@ -358,13 +358,13 @@ It should now look like this with two upload nodes:
 
 Click **+** on the arrow between Node 1 and END → select **Add a flow activity → Document extractor**
 
-<img width="440" height="267" alt="image" src="https://github.com/user-attachments/assets/9d1b65a2-f901-4a38-8237-7d85b498fcf0" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/9d1b65a2-f901-4a38-8237-7d85b498fcf0" />
 
 Click on the node to open its configuration panel.
 
 When prompted, select document type: `Unstructured`
 
-<img width="438" height="285" alt="image" src="https://github.com/user-attachments/assets/0da8020e-9f02-4e87-8f4e-4d55a770db59" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/0da8020e-9f02-4e87-8f4e-4d55a770db59" />
 
 > **Rename:** Click the **pencil icon** (top-left of node) → type `Extract emirates ID fields`
 >
@@ -372,16 +372,16 @@ When prompted, select document type: `Unstructured`
 
 Drag and drop the training Emirates ID file `EID_Train.png` into the document upload area of the node.
 
-<img width="468" height="274" alt="image" src="https://github.com/user-attachments/assets/fdd034e8-2002-4160-a3d2-d425dcdc272c" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/fdd034e8-2002-4160-a3d2-d425dcdc272c" />
 
 > This is the training document.
 
 Click **Add field** and add these fields:
 
 
-<img width="468" height="258" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
 
-<img width="468" height="261" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
 
 | Field name | Type | Description |
 |---|---|---|
@@ -446,17 +446,17 @@ Click **Add field** and add:
 
 Click **+** between Node 4 and END → select **Add a flow activity → Logic block**
 
-<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/1b288b54-ba99-4f07-aded-b18dc4f78677" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/1b288b54-ba99-4f07-aded-b18dc4f78677" />
 
 Click on the node to open its configuration panel.
 
 > **Rename:** `Eligibility Check`
 
-<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/d9eb3f04-36c2-4eb6-b923-813d2f039c1b" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d9eb3f04-36c2-4eb6-b923-813d2f039c1b" />
 
 **Logic block code** — paste this Python code:
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/9ee3b9f8-15f6-4b49-92eb-cb858fd5fe61" />
+<img width="808" alt="image" src="https://github.com/user-attachments/assets/9ee3b9f8-15f6-4b49-92eb-cb858fd5fe61" />
 
 ```python
 # ---- Pull extracted fields from the two upstream document extractor nodes ----
@@ -552,9 +552,9 @@ self.output.reason = reason
 
 **Output schema** — click **Output variables** tab → **Add variable**:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/9fb2ebe8-0c42-4e50-81c3-d1bf34eccf55" />
+<img width="880" alt="image" src="https://github.com/user-attachments/assets/9fb2ebe8-0c42-4e50-81c3-d1bf34eccf55" />
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/c6a217f9-0090-4d69-92f9-9369c058f138" />
+<img width="880" alt="image" src="https://github.com/user-attachments/assets/c6a217f9-0090-4d69-92f9-9369c058f138" />
 
 | Variable name | Type | Description |
 |---|---|---|
@@ -573,7 +573,7 @@ Click on the node to open its configuration panel.
 
 > **Rename:** `Generative prompt`
 
-<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/636afa32-e1e6-4b40-a1b3-02dc64455451" />
+<img width="880" alt="image" src="https://github.com/user-attachments/assets/636afa32-e1e6-4b40-a1b3-02dc64455451" />
 
 **Input variables** — click the **Input variables** tab → **Add variable**:
 
@@ -639,7 +639,7 @@ Return only this structure and nothing else:
 }
 ```
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/e144b6a6-85a0-4008-9c25-ebde9b77c169" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/e144b6a6-85a0-4008-9c25-ebde9b77c169" />
 
 **Data Mapping:**
 
@@ -687,7 +687,7 @@ Generative prompt  (Package Output)
 END
 ```
 
-<img width="355" height="648" alt="image" src="https://github.com/user-attachments/assets/814df0b2-d282-419c-ace1-c80288818d4c" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/814df0b2-d282-419c-ace1-c80288818d4c" />
 
 ---
 
@@ -701,9 +701,9 @@ Click **Done** (top-right) to return to the agent page.
 
 While still on the `document_agent` page, click the **Toolset** tab on the left side menu → scroll down to **Knowledge** section → **Add source** → select **New knowledge**.
 
-<img width="466" height="333" alt="image" src="https://github.com/user-attachments/assets/061b73e6-6d5f-44a6-b5c2-1a9bf2abf3ef" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/061b73e6-6d5f-44a6-b5c2-1a9bf2abf3ef" />
 <br><br>
-<img width="458" height="224" alt="image" src="https://github.com/user-attachments/assets/d764ccae-b569-4c2a-aad7-c1d3563d2e00" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d764ccae-b569-4c2a-aad7-c1d3563d2e00" />
 
 ---
 
@@ -713,7 +713,7 @@ Choose **Milvus** as the knowledge source.
 
 Click **Next**.
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/b4a997e2-9219-4b67-9ca7-73177e84e7a3" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/b4a997e2-9219-4b67-9ca7-73177e84e7a3" />
 
 ---
 
@@ -760,7 +760,7 @@ RWrrFm6Z2Q5u3KuIlvPmDEQ+cWtFXQ==
 
 Click **Next**.
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/3e4d12bd-1266-41db-83a6-ec2d58bebc79" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3e4d12bd-1266-41db-83a6-ec2d58bebc79" />
 
 ---
 
@@ -786,9 +786,8 @@ Configure the result content as follows:
 
 Click **Next**.
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/73b39b49-4ff4-433e-a631-eaf0eec4ce72" />
-
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/a8ceb8a8-e55b-4e70-9864-8339ab410186" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/73b39b49-4ff4-433e-a631-eaf0eec4ce72" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/a8ceb8a8-e55b-4e70-9864-8339ab410186" />
 
 ---
 
@@ -803,7 +802,7 @@ Enter the knowledge base details:
 
 Click **Save**.
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/f6665300-220a-4da7-abde-713c825d72d9" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/f6665300-220a-4da7-abde-713c825d72d9" />
 
 ---
 
@@ -1059,7 +1058,7 @@ Verify the tool was imported — go to your browser:
 
 If `create_payment_link` appears in the list, the tool is ready. ✅
 
-<img width="468" height="234" alt="image" src="https://github.com/user-attachments/assets/ce277f5e-b9f7-47a7-b33e-46fd4f513206" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/ce277f5e-b9f7-47a7-b33e-46fd4f513206" />
 
 ---
 
@@ -1218,7 +1217,7 @@ On the Master Agent page, click the **refresh button** on the top left of the ag
 ```
 Check my postpaid plan eligibility
 ```
-<img width="468" height="235" alt="image" src="https://github.com/user-attachments/assets/92ce842a-acca-48e2-b305-df498a2675df" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/92ce842a-acca-48e2-b305-df498a2675df" />
 
 > Using training documents: `EID_Train.png` + `Payslip_Train.png`
 
