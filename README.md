@@ -253,6 +253,8 @@ Under **Style** select `Default`.
 
 Click the **Behaviour** tab and paste:
 
+<img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
+
 ```
 Call document_extract_tool ALWAYS.
 After the tool finishes, return the complete tool output to the user.
@@ -301,8 +303,6 @@ If after verification no plans pass both checks, say so clearly and do not fabri
 
 Do not show any reasoning, intermediate steps, retrieval results, plan counts, or internal checks to the user — only the user details block and the final plan table.
 ```
-
-<img width="468" height="418" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
 
 ---
 
@@ -378,6 +378,11 @@ Drag and drop the training Emirates ID file `EID_Train.png` into the document up
 
 Click **Add field** and add these fields:
 
+
+<img width="468" height="258" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
+
+<img width="468" height="261" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
+
 | Field name | Type | Description |
 |---|---|---|
 | `ID Number` | string | Extract the Emirates ID number exactly as shown on the card, usually in the format 784-XXXX-XXXXXXX-X. |
@@ -386,10 +391,6 @@ Click **Add field** and add these fields:
 | `Nationality` | string | Extract the card holder's nationality from the Emirates ID. Look for the label "Nationality" or "الجنسية". Return only the nationality value, not the label. The value may be a country name such as United Arab Emirates, Saudi Arabia, India, Pakistan, Egypt, Philippines, Jordan, Syria, or another nationality. If both English and Arabic are shown, return the English nationality. |
 | `Expiry Date` | date | Extract the expiry date of the Emirates ID exactly as shown on the card. This field will be used later for eligibility validation. |
 | `Date of Issue` | date | Extract the issue date of the Emirates ID exactly as shown on the card. |
-
-<img width="468" height="258" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
-
-<img width="468" height="261" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
 
 <details>
 <summary> <strong>💡 Optional — Map the document Source (click to expand) </strong> </summary>
@@ -551,14 +552,15 @@ self.output.reason = reason
 
 **Output schema** — click **Output variables** tab → **Add variable**:
 
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9fb2ebe8-0c42-4e50-81c3-d1bf34eccf55" />
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/c6a217f9-0090-4d69-92f9-9369c058f138" />
+
 | Variable name | Type | Description |
 |---|---|---|
 | `status` | string | Final eligibility status (PASS or FAIL) |
 | `reason` | string | Reason for approval or rejection |
 
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/9fb2ebe8-0c42-4e50-81c3-d1bf34eccf55" />
-
-<img width="468" height="236" alt="image" src="https://github.com/user-attachments/assets/c6a217f9-0090-4d69-92f9-9369c058f138" />
 
 
 ---
