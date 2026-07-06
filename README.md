@@ -178,13 +178,15 @@ You will receive an invitation email from IBM Cloud to join the bootcamp Orchest
 
 Once you are logged in to IBM Cloud:
 
-1. Click the **☰ hamburger menu** (top-left)
-2. Click **Resource list**
-3. Click **AI / Machine Learning**
-4. Under it, find **Watson Orchestrate** and click it
-5. Click **Launch watsonx Orchestrate**
-<img width="1280" height="483" alt="image" src="https://github.com/user-attachments/assets/f4883e16-a624-4c4f-9f6f-513060e1c367" />
-<img width="1234" height="769" alt="image" src="https://github.com/user-attachments/assets/ac828d6f-f8fd-4d7c-a686-1d7defd921bc" />
+1. You should see **itz-watsonx-event-001** displayed in the top navigation bar next to the IBM Cloud logo
+2. Click the **☰ hamburger menu** (top-left)
+3. Click **Resource list**
+4. Click **AI / Machine Learning**
+5. Under it, find **Watson Orchestrate** and click it
+6. Click **Launch watsonx Orchestrate**
+<img width="1424" height="482" alt="image" src="https://github.com/user-attachments/assets/bbba5d44-8bd4-4e19-82f0-2a915de59846" />
+<img width="1413" height="497" alt="image" src="https://github.com/user-attachments/assets/af4af491-c335-49c8-b2db-c7bf2bbd6c0e" />
+
 
 This opens your watsonx Orchestrate environment — this is where you will build everything in this lab.
 
