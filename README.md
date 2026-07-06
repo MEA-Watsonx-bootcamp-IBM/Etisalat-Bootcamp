@@ -1,4 +1,4 @@
-# Telecom Postpaid Plan Eligibility Bootcamp
+# Telecom Postpaid Eligibility Bootcamp
 
 **IBM watsonx Orchestrate**
 
