@@ -542,10 +542,10 @@ Click on the node to open its configuration panel.
 |---|---|
 | `full_name` | string |
 | `id_number` | string |
-| `expiry_date` | string |
+| `expiry_date` | date |
 | `nationality` | string |
 | `gross_salary` | string |
-| `date_of_birth` | string |
+| `date_of_birth` | date |
 | `employee_name` | string |
 | `status` | string |
 | `reason` | string |
