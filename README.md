@@ -1203,7 +1203,7 @@ MANDATORY:
 Click the **Toolset** tab on the right side menu → scroll down to the **Agents** section → **Add agents** → **Local instance** → select:
 
 - `document_agent_<your_last_name>`
-- `payment_agent<your_last_name>`
+- `payment_agent_<your_last_name>`
 
 Click **Add**.
 
