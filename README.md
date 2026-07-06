@@ -84,7 +84,7 @@ IBM watsonx Orchestrate is an open, hybrid enterprise platform for agentic AI. I
 
 ## 2. Architecture Overview
 
-We will build an **Postpaid Plan Eligibility System** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
+We will build an **Postpaid Plan Eligibility Workflow** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
 
 ```
 User
