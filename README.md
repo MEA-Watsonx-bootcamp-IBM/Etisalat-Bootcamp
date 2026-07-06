@@ -346,7 +346,7 @@ Click **Add field** and add these fields:
 | `Date of Birth` | date | Extract the card holder's date of birth exactly as shown on the Emirates ID. Return in YYYY-MM-DD format if possible. |
 | `Nationality` | string | Extract the card holder's nationality from the Emirates ID. Look for the label "Nationality" or "الجنسية". Return only the nationality value, not the label. The value may be a country name such as United Arab Emirates, Saudi Arabia, India, Pakistan, Egypt, Philippines, Jordan, Syria, or another nationality. If both English and Arabic are shown, return the English nationality. |
 | `Expiry Date` | date | Extract the expiry date of the Emirates ID exactly as shown on the card. This field will be used later for eligibility validation. |
-| `Date of Issue` | string | Extract the issue date of the Emirates ID exactly as shown on the card. |
+| `Date of Issue` | date | Extract the issue date of the Emirates ID exactly as shown on the card. |
 
 <img width="468" height="258" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
 
