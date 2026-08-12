@@ -703,12 +703,15 @@ Click **Done** (top-right) to return to the agent page.
 While still on the `document_agent` page, click the **Knowledge** tab on the left side menu → **Add source** → select **Existing knowledge**.
 
 <!-- TODO: replace with uploaded screenshot — Step 1: "Add knowledge" dialog with "Existing knowledge" selected -->
-<img width="800" alt="Step 1 - Select Existing knowledge" src="PLACEHOLDER_IMAGE_1" />
+<img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/20f81b79-2072-4482-ac52-2bae6f0f0558"/>
+<img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/5ce9898e-f7c6-43a5-9e59-143ca3dd4d56"/>
+
 
 Select **Postpaid_Plans_KB** from the list.
 
 <!-- TODO: replace with uploaded screenshot — Step 2: knowledge list with "Postpaid_Plans_KB" selected -->
-<img width="800" alt="Step 2 - Select Postpaid_Plans_KB" src="PLACEHOLDER_IMAGE_2" />
+<img width="1328" height="760" alt="image" src="https://github.com/user-attachments/assets/82e3c71b-77af-494b-9a47-4eae6e2bd658" />
+
 
 Click **Add knowledge**.
 
