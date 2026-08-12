@@ -432,7 +432,8 @@ Drag and drop the training payslip file `Payslip_Train.png` into the document up
 
 > This is the training document. You will swap it during test scenarios.
 
-Click **Add field** and add:
+Click **Add field** and add the fields in the table below.
+For each field, click the **⋮ three-dot menu** → **Edit** to set its type and description.
 
 | Field name | Type | Description |
 |---|---|---|
@@ -789,7 +790,7 @@ File → Open Folder → select etisalat-bootcamp
 File → New File → name it: create_payment_link.py
 ```
 
-Paste this code and save (`Ctrl+S` / `Cmd+S`):
+Paste this code:
 
 ```python
 from ibm_watsonx_orchestrate.agent_builder.tools import tool
@@ -810,7 +811,7 @@ class PaymentLinkResult(BaseModel):
 
 
 @tool(
-    name="create_payment_link",
+    name="create_payment_link_<your_last_name>",
     description="""Creates a Stripe Checkout payment link (test mode) for
     a selected postpaid plan's monthly rental amount.
 
@@ -894,6 +895,13 @@ def create_payment_link(
         reason="Checkout session created for " + plan_name + " at " + str(rental_aed) + " AED/month."
     )
 ```
+
+> ⚠️ Go to **line 19** in the code and replace `<your_last_name>` with your last name.
+> **Example:** `name="create_payment_link_ahmed"`
+
+<!-- TODO: add screenshot of line 19 edited with last name -->
+
+Then save the file (`Ctrl+S` / `Cmd+S`).
 
 ---
 
@@ -1257,12 +1265,12 @@ You have successfully built and tested a fully functional 3-agent Postpaid Plan 
 
 - **document_agent**: Agentic workflow with Emirates ID and payslip extraction, eligibility validation script, and knowledge base integration
 - **payment_agent**: ADK Python tool with Stripe test mode integration
-- **Master agent**: React-style orchestrator managing the full user journey
-- **Knowledge base**: CSV-based plan catalog with salary-based eligibility
+- **Master agent**: React Core orchestrator managing the full user journey
+- **Knowledge base**: Milvus-backed plan catalog with salary-based eligibility
 
 ### Key Concepts Covered
 
-- Multi-agent orchestration with React and Default styles
+- Multi-agent orchestration with React Core style
 - Agentic workflows with document extraction nodes
 - Python script nodes for business logic
 - Knowledge base integration for dynamic data retrieval
