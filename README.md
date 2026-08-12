@@ -201,9 +201,11 @@ You will need these two values throughout the lab. Follow these steps to retriev
 3. Copy the **Service instance URL** shown on the page and save it
 4. Click **Generate API key**
 5. Click **Create**
+
    <img width="1311" height="748" alt="image" src="https://github.com/user-attachments/assets/bd953873-acec-4c4f-8fac-c9c45a09c3b9" />
-7. Enter your **name** in the name field — leave all other fields as they are
-8. Click the button in the bottom-right corner — copy and save the generated API key
+
+6. Enter your **name** in the name field — leave all other fields as they are
+7. Click the button in the bottom-right corner — copy and save the generated API key
 
 > ⚠️ Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
 
