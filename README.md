@@ -388,12 +388,10 @@ Drag and drop the training Emirates ID file `EID_Train.png` into the document up
 
 > This is the training document.
 
-Click **Add field** and add these fields:
-
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/fed473e2-de25-44fa-a4d0-600c24a209e2" />
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/a075dceb-5a3f-48c8-ba3b-ec29139da798" />
+Click **Add field** and add the fields in the table below.
+For each field, click the **⋮ three-dot menu** → **Edit** to set its type and description.
+<img width="1293" height="764" alt="image" src="https://github.com/user-attachments/assets/ba77d92b-a06c-40e1-ab9b-192d965206ae" />
+<img width="1324" height="780" alt="image" src="https://github.com/user-attachments/assets/fbca5b57-0558-4a80-afe4-b1d2d31119ea" />
 
 | Field name | Type | Description |
 |---|---|---|
