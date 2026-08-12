@@ -105,7 +105,7 @@ User
 │                │  │                          │
 │ Agentic        │  │ Python tool (ADK)         │
 │ Workflow (UI)  │  │ Stripe integration        │
-│ Style: Default │  │ Style: Default            │
+│ Style: React Core │  │ Style: React Core            │
 │                │  │                          │
 │ · User upload  │  │ · create_payment_link     │
 │ · Emirates ID  │  │ · Test mode checkout      │
@@ -244,8 +244,9 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 ☰ Hamburger menu → Build → Create Agent → From scratch
 ```
 
-<img width="1325" height="761" alt="image" src="https://github.com/user-attachments/assets/81257616-56a0-40b8-9ef4-fa8937218d4f" />
-<img width="1336" height="759" alt="image" src="https://github.com/user-attachments/assets/2c7784c5-890d-445c-b5dc-4559231f9997" />
+<img width="1112" height="637" alt="image" src="https://github.com/user-attachments/assets/2d34c1e0-0139-418f-84f8-97f134658c58" />
+<img width="1339" height="767" alt="image" src="https://github.com/user-attachments/assets/e2c5c75a-2f67-4b9a-9653-4ca1e9b0d71b" />
+
 
 | Field | Value |
 |---|---|
@@ -254,9 +255,9 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 
 Click **Create**.
 
-Under **Style** select `Default`.
+Under **Style** select `React Core`.
 
-<img width="900" alt="image" src="https://github.com/user-attachments/assets/95e27da2-61d0-4668-9d2c-26d47f3c55eb" />
+<img width="987" height="382" alt="image" src="https://github.com/user-attachments/assets/6339fa9f-3715-4f84-87de-e155e50c2896" />
 
 ---
 
@@ -741,7 +742,7 @@ Click **Add knowledge**.
 
 Click **Create**.
 
-Under **Style** select `Default`.
+Under **Style** select `React Core`.
 
 ---
 
@@ -1006,7 +1007,7 @@ Click the **Toolset** tab on the left side menu → **Add tool** → **Local ins
 
 Click **Create**.
 
-Under **Style** select `React`.
+Under **Style** select `React Core`.
 
 ---
 
