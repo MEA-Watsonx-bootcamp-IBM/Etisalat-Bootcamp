@@ -1,4 +1,4 @@
-# Telecom Postpaid Plan Eligibility Bootcamp
+<img width="1311" height="748" alt="image" src="https://github.com/user-attachments/assets/ed120b8a-9a7e-4670-8385-d5f455cb4e76" /># Telecom Postpaid Plan Eligibility Bootcamp
 
 **IBM watsonx Orchestrate**
 
@@ -200,18 +200,16 @@ You will need these two values throughout the lab. Follow these steps to retriev
 2. Click **Settings** → **API details** tab
 3. Copy the **Service instance URL** shown on the page and save it
 4. Click **Generate API key**
-
-<!-- TODO: add screenshot of Generate API key dialog -->
-
 5. Click **Create**
-6. Enter your **name** in the name field — leave all other fields as they are
-7. Click the button in the bottom-right corner — copy and save the generated API key
+   <img width="1311" height="748" alt="image" src="https://github.com/user-attachments/assets/bd953873-acec-4c4f-8fac-c9c45a09c3b9" />
+7. Enter your **name** in the name field — leave all other fields as they are
+8. Click the button in the bottom-right corner — copy and save the generated API key
 
-> ⚠️ Copy the Service instance URL **before** clicking Generate API key. Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
+> ⚠️ Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
 
 | Credential | Where to find it |
 |---|---|
-| Service instance URL | Settings → API details tab (copy before generating key) |
+| Service instance URL | Settings → API details tab → Copy instance url at the bottom |
 | API key | Settings → API details tab → Generate API key → Create → enter name → copy |
 
 ---
