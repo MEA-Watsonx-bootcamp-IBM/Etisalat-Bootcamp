@@ -85,7 +85,7 @@ IBM watsonx Orchestrate is an open, hybrid enterprise platform for agentic AI. I
 
 ## 2. Architecture Overview
 
-We will build an **Postpaid Plan Eligibility Workflow** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
+We will build a **Postpaid Plan Eligibility Workflow** — a 3-agent pipeline that processes identity documents, validates eligibility, and processes payment.
 
 ```
 User
@@ -238,7 +238,7 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 
 | Field | Value |
 |---|---|
-| Name | `document_agent_<your_last_name> (eg: payment_agent_ahmed)`|
+| Name | `document_agent_<your_last_name> (eg: document_agent_ahmed)`|
 | Description | Extracts structured information from uploaded Emirates ID documents and payslips for postpaid eligibility verification. Reads Emirates ID and extracts full name, ID number, date of birth, expiry date. Reads payslip and extracts employee name, company name, gross salary, pay period. Returns all extracted fields in structured format for downstream eligibility validation. |
 
 Click **Create**.
@@ -440,6 +440,7 @@ Click **Add field** and add:
 6. On the right side, select `value`
 
 </details>
+
 ---
 
 #### Node 5 — Logic Block (Eligibility Check)
@@ -699,110 +700,17 @@ Click **Done** (top-right) to return to the agent page.
 
 ### 1.6 Add Knowledge Base
 
-While still on the `document_agent` page, click the **Toolset** tab on the left side menu → scroll down to **Knowledge** section → **Add source** → select **New knowledge**.
+While still on the `document_agent` page, click the **Knowledge** tab on the left side menu → **Add source** → select **Existing knowledge**.
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/061b73e6-6d5f-44a6-b5c2-1a9bf2abf3ef" />
-<br><br>
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/d764ccae-b569-4c2a-aad7-c1d3563d2e00" />
+<!-- TODO: replace with uploaded screenshot — Step 1: "Add knowledge" dialog with "Existing knowledge" selected -->
+<img width="800" alt="Step 1 - Select Existing knowledge" src="PLACEHOLDER_IMAGE_1" />
 
----
+Select **Postpaid_Plans_KB** from the list.
 
-#### Select Source
+<!-- TODO: replace with uploaded screenshot — Step 2: knowledge list with "Postpaid_Plans_KB" selected -->
+<img width="800" alt="Step 2 - Select Postpaid_Plans_KB" src="PLACEHOLDER_IMAGE_2" />
 
-Choose **Milvus** as the knowledge source.
-
-Click **Next**.
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/b4a997e2-9219-4b67-9ca7-73177e84e7a3" />
-
----
-
-#### Connect Milvus
-
-Enter the Milvus connection details:
-
-| Field | Value |
-|---|---|
-| GRPC host | `161.156.199.100` |
-| GRPC port | `8080` |
-| Username | `root` |
-| Password | `YourStrongPassword123!` |
-|💡 SSL certificate | Paste the provided certificate |
-
-<details>
-<summary><b>💡 SSL Certificate (Click to expand)</b></summary>
-   
-```text
------BEGIN CERTIFICATE-----
-MIIDojCCAoqgAwIBAgIUfQBXSJmqkgsZvf89eYCcQ2H7epMwDQYJKoZIhvcNAQEL
-BQAwWDELMAkGA1UEBhMCR0IxGzAZBgNVBAoMEkNsaWVudCBFbmdpbmVlcmluZzES
-MBAGA1UECwwJQVMgYW5kIFBXMRgwFgYDVQQDDA8xNjEuMTU2LjE5OS4xMDEwHhcN
-MjYwNzAxMTEzNzAyWhcNMzYwNjI4MTEzNzAyWjBYMQswCQYDVQQGEwJHQjEbMBkG
-A1UECgwSQ2xpZW50IEVuZ2luZWVyaW5nMRIwEAYDVQQLDAlBUyBhbmQgUFcxGDAW
-BgNVBAMMDzE2MS4xNTYuMTk5LjEwMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
-AQoCggEBAJMBSYTKpiQ3vKyrf7DM9fAlSuT04DbVtkOpSxE6PStk9zD/G590Hy7f
-sIwp4HAn1Wmhqm+/REX0+9dlnQSz2t5bfVPnTIcX+kAVNd2b4hKN9Ckblw962Ltu
-1dq4aDYtcyXPUQrK4C8qr4yPSvxTw5T+vIBvCHmejcHzNvtMLeYLuVlNvxf6Dq93
-d18T6iVZ9yzqcwm9+AqImFSM1qjDqukkxd0/ytcMXdnh1FYxnrzONG0EgUiJlqHA
-1gTMAqaZjRDr7FMrf5GWEWe9knmx86aIdoySfJZpzTxFdXbTvIJYvy2iwZcrtwl5
-dw6ZNltdAJZgJNcMYhOrdiO+dEMRLXECAwEAAaNkMGIwHQYDVR0OBBYEFDPWdPwn
-yJFyj5D/RGK4dX3lohn+MB8GA1UdIwQYMBaAFDPWdPwnyJFyj5D/RGK4dX3lohn+
-MA8GA1UdEwEB/wQFMAMBAf8wDwYDVR0RBAgwBocEoZzHZDANBgkqhkiG9w0BAQsF
-AAOCAQEAURZHbiPZuOJBJOEXuBb1h5nTiwBBqleJLrmkjFZr5nE6jFxSZS1htqu0
-BVT8vLnFq1NwRiAZn5jYvkJsEunZCOxmoZIampwAT4MoM4rZwr0/yiylpRzKyFkb
-eTXgHPJoFJquOamIuVAl7jSHzVS8G759clNEch+5fsl388LdjkzPygOBLyg8I8Jn
-QuI2Nqp45KMFnVGybk3Di/DQ3Qv1EYYCPfAqiEKRqm/C0AF3jSerVsNna5DrQvo9
-GmZN7oL7WEzTwqAFYDF/+JXIwaxiML0+bu5LDgeIcJ4Et4Atb5zsUKCUGBx/Bm6R
-RWrrFm6Z2Q5u3KuIlvPmDEQ+cWtFXQ==
------END CERTIFICATE-----
-```
-</details>
-
-Click **Next**.
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/3e4d12bd-1266-41db-83a6-ec2d58bebc79" />
-
----
-
-#### Select Index
-
-Configure the index using the following values:
-
-| Field | Value |
-|---|---|
-| Database | `default` |
-| Use Collection or Alias | `Collection` |
-| Collection | `postpaid_plans` |
-| Index | `embedding` |
-| Embedding model | `granite-embedding-278m-multilingual` |
-
-Configure the result content as follows:
-
-| Field | Value |
-|---|---|
-| Title | `plan_name` |
-| Body | `text` |
-| URL | Leave empty |
-
-Click **Next**.
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/73b39b49-4ff4-433e-a631-eaf0eec4ce72" />
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/a8ceb8a8-e55b-4e70-9864-8339ab410186" />
-
----
-
-#### Knowledge Details
-
-Enter the knowledge base details:
-
-| Field | Value |
-|---|---|
-| Name | `Postpaid plans` |
-| Description | Contains all the costs and criteria for all the postpaid plans. |
-
-Click **Save**.
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/f6665300-220a-4da7-abde-713c825d72d9" />
+Click **Add knowledge**.
 
 ---
 
@@ -1026,7 +934,7 @@ pip install ibm-watsonx-orchestrate
 pip3 install ibm-watsonx-orchestrate
 ```
 
-Add your environment — replace `<your-instance-url>` with the **Service instance URL** you copied in [Prerequisites](#prerequisites):
+Add your environment — replace `<your-instance-url>` with the **Service instance URL** you copied in [Accessing Your Environment](#accessing-your-environment):
 
 ```bash
 orchestrate env add -n EtisalatBootcamp -u <your-instance-url>
@@ -1082,7 +990,7 @@ Click the **Toolset** tab on the left side menu → **Add tool** → **Local ins
 
 | Field | Value |
 |---|---|
-| Name | `Postpaid Eligibility Agent_<your_last_name> (eg: payment_agent_ahmed)`|
+| Name | `Postpaid Eligibility Agent_<your_last_name> (eg: Postpaid_Eligibility_Agent_ahmed)`|
 | Description | Helps users check eligibility for postpaid plans and complete sign-up. Collects Emirates ID and payslip, verifies identity and income requirements, recommends eligible plan tiers, and processes payment for the plan the user selects. |
 
 Click **Create**.
