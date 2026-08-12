@@ -899,7 +899,7 @@ def create_payment_link(
 > ⚠️ Go to **line 19** in the code and replace `<your_last_name>` with your last name.
 > **Example:** `name="create_payment_link_ahmed"`
 
-<!-- TODO: add screenshot of line 19 edited with last name -->
+<img width="994" height="682" alt="image" src="https://github.com/user-attachments/assets/bae12088-6fee-494d-933d-cf97f52ff8c5" />
 
 Then save the file (`Ctrl+S` / `Cmd+S`).
 
