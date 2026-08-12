@@ -645,8 +645,8 @@ Return only this structure and nothing else:
     "gross_salary": {self.input.gross_salary}
   },
 "eligibility": {
-    "status": status,
-    "reason": reason
+    "status": {self.input.status},
+    "reason": {self.input.reason},
   }
 }
 ```
