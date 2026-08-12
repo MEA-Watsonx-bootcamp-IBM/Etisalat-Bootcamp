@@ -1,4 +1,4 @@
-<img width="1311" height="748" alt="image" src="https://github.com/user-attachments/assets/ed120b8a-9a7e-4670-8385-d5f455cb4e76" /># Telecom Postpaid Plan Eligibility Bootcamp
+# Telecom Postpaid Plan Eligibility Bootcamp
 
 **IBM watsonx Orchestrate**
 
