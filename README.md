@@ -194,14 +194,25 @@ This opens your watsonx Orchestrate environment — this is where you will build
 
 ### Step 3 — Save Your Credentials
 
-You will need these two values throughout the lab. Save them somewhere accessible before you start.
+You will need these two values throughout the lab. Follow these steps to retrieve them from your environment.
 
-| Credential | Value |
+1. Click your **Profile icon** (top-right corner)
+2. Click **Settings** → **API details** tab
+3. Copy the **Service instance URL** shown on the page and save it
+4. Click **Generate API key**
+
+<!-- TODO: add screenshot of Generate API key dialog -->
+
+5. Click **Create**
+6. Enter your **name** in the name field — leave all other fields as they are
+7. Click the button in the bottom-right corner — copy and save the generated API key
+
+> ⚠️ Copy the Service instance URL **before** clicking Generate API key. Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
+
+| Credential | Where to find it |
 |---|---|
-| Service instance URL | `https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/6e6caa21-ebed-463d-8f96-dceeb273ad5a` |
-| API key | `CzG5iHiW8G5CX5AcMPoQRfXrc9IOwJt70HJj49DbEX8S` |
-
-> ⚠️ Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
+| Service instance URL | Settings → API details tab (copy before generating key) |
+| API key | Settings → API details tab → Generate API key → Create → enter name → copy |
 
 ---
 
@@ -702,14 +713,11 @@ Click **Done** (top-right) to return to the agent page.
 
 While still on the `document_agent` page, click the **Knowledge** tab on the left side menu → **Add source** → select **Existing knowledge**.
 
-<!-- TODO: replace with uploaded screenshot — Step 1: "Add knowledge" dialog with "Existing knowledge" selected -->
 <img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/20f81b79-2072-4482-ac52-2bae6f0f0558"/>
 <img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/5ce9898e-f7c6-43a5-9e59-143ca3dd4d56"/>
 
-
 Select **Postpaid_Plans_KB** from the list.
 
-<!-- TODO: replace with uploaded screenshot — Step 2: knowledge list with "Postpaid_Plans_KB" selected -->
 <img width="1328" height="760" alt="image" src="https://github.com/user-attachments/assets/82e3c71b-77af-494b-9a47-4eae6e2bd658" />
 
 
