@@ -475,9 +475,9 @@ Click on the node to open its configuration panel.
 id_fields = parent["Extract emirates ID fields"].output
 payslip_fields = parent["Extract payslip fields"].output
 
-id_name_raw = id_fields.get("Full Name", "")
-payslip_name_raw = payslip_fields.get("Employee Name", "")
-expiry_str = id_fields.get("Expiry Date", "")
+id_name_raw = id_fields.get("full_name", "")
+payslip_name_raw = payslip_fields.get("employee_name", "")
+expiry_str = id_fields.get("expiry_date", "")
 gross_salary = float(payslip_fields.get("gross_salary", 0))
 
 # ---- Check 1: Cross-name validation ----
@@ -616,39 +616,47 @@ Always preserve the exact values as given to you.
 **User Prompt:**
 
 ```
-Combine the following two documents into a single JSON object
-with exactly two keys: "emirates_id" and "payslip".
+Combine the two documents into a single JSON object that has exactly three top‑level keys: **emirates_id**, **payslip**, and **eligibility**.
 
-Emirates ID data:
+**Emirates ID data** (replace the placeholders with the actual values):
 - ID Number: {self.input.id_number}
 - Full Name: {self.input.full_name}
 - Date of Birth: {self.input.date_of_birth}
 - Nationality: {self.input.nationality}
 - Expiry Date: {self.input.expiry_date}
 
-Payslip data:
+**Payslip data** (replace the placeholders with the actual values):
 - Employee Name: {self.input.employee_name}
 - Gross Salary: {self.input.gross_salary}
 
-Return only this structure and nothing else:
+**Eligibility data** (replace the placeholders with the actual values; if a value is not available, use an empty string `""`):
+- Status: {self.input.status}
+- Reason: {self.input.reason}
+
+**Return only** the following JSON structure—no extra text, no formatting, and no additional keys:
 
 {
-  "emirates_id": {
-    "id_number": {self.input.id_number},
-    "full_name": {self.input.full_name},
-    "date_of_birth": {self.input.date_of_birth},
-    "nationality": {self.input.nationality},
-    "expiry_date": {self.input.expiry_date}
+  "emirates_id": {self.input.
+    "id_number": "{self.input.id_number}",
+    "full_name": "{self.input.full_name}",
+    "date_of_birth": "{self.input.date_of_birth}",
+    "nationality": "{self.input.nationality}",
+    "expiry_date": "{self.input.expiry_date}"
   },
-  "payslip": {
-    "employee_name": {self.input.employee_name},
-    "gross_salary": {self.input.gross_salary}
+  "payslip": {self.input.
+    "employee_name": "{self.input.employee_name}",
+    "gross_salary": "{self.input.gross_salary}"
   },
-"eligibility": {
-    "status": {self.input.status},
-    "reason": {self.input.reason},
+  "eligibility": {self.input.
+    "status": "{self.input.status}",
+    "reason": "{self.input.reason}"
   }
 }
+
+**RULE:**
+- **Always** output every field shown above (`id_number`, `full_name`, `date_of_birth`, `nationality`, `expiry_date`, `employee_name`, `gross_salary`, `status`, `reason`).
+- If a particular value is unknown or not provided, insert an empty string (`""`) for that field.
+- Do **not** omit any keys, do **not** add extra keys, and do **not** include any explanatory text or markdown formatting. The response must be a plain JSON object exactly as shown.
 ```
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/e144b6a6-85a0-4008-9c25-ebde9b77c169" />
