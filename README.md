@@ -281,11 +281,11 @@ Only explain the rejection reason.
 If eligibility status is PASS:
 
 STEP 1 — Retrieve:
-Retrieve ALL records from the "Postpaid Plans Knowledge Base". Do not stop after finding one match. Retrieve every plan record available, regardless of how many are returned.
+Call the get_postpaid_plans tool to obtain the full plan catalogue. It returns the complete, authoritative list of plans as JSON (plan name, minimum salary, monthly rental, credit limit). Always call it exactly once. Do not use knowledge base search to obtain the plan list — the get_postpaid_plans tool is the source of truth.
 
 STEP 2 — Analyse and verify (do this internally before responding, do not show this to the user):
 Before presenting anything to the user, reason through the retrieved data:
-- List every plan record that was returned from the knowledge base, exactly as retrieved.
+- List every plan record returned by the get_postpaid_plans tool, exactly as returned.
 - For each record, check whether the customer's gross salary is greater than or equal to that plan's minimum salary requirement.
 - Check whether the plan name, rental amount, and credit limit are all present and non-empty. If any of these fields are missing or look incorrect (e.g. a rental amount of 0, a blank plan name), flag that record as unreliable and exclude it.
 - Reason explicitly about each retrieved record: does it have a plan name, a minimum salary, a rental amount, and a credit limit that are all present, non-zero, and internally consistent with each other? For example, a higher rental amount should correspond to a higher minimum salary and a higher credit limit — if a record has a very high rental but an implausibly low minimum salary, or any field is blank or zero, flag it as a retrieval artifact and exclude it.
@@ -717,19 +717,226 @@ Click **Done** (top-right) to return to the agent page.
 
 ---
 
-### 1.6 Add Knowledge Base
+### 1.6 Set Up Your IDE and ADK Environment
 
-While still on the `document_agent` page, click the **Knowledge** tab on the left side menu → **Add source** → select **Existing knowledge**.
+Before importing any tools, set up VS Code and activate your Orchestrate environment. You only need to do this once — it covers both the knowledge base tool and the payment tool.
 
-<img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/20f81b79-2072-4482-ac52-2bae6f0f0558"/>
-<img width="800" alt="Step 1 - Select Existing knowledge" src="https://github.com/user-attachments/assets/5ce9898e-f7c6-43a5-9e59-143ca3dd4d56"/>
+---
 
-Select **Postpaid_Plans_KB** from the list.
+#### Step 1 — Open your IDE
 
-<img width="1328" height="760" alt="image" src="https://github.com/user-attachments/assets/82e3c71b-77af-494b-9a47-4eae6e2bd658" />
+Open **VS Code**. Create a new folder on your desktop called `etisalat-bootcamp`.
+
+```
+File → Open Folder → select etisalat-bootcamp
+```
+
+---
+
+#### Step 2 — Open the terminal in VS Code
+
+```
+Terminal → New Terminal
+```
+
+A terminal panel opens at the bottom of VS Code pointing to your `etisalat-bootcamp` folder.
+
+---
+
+#### Step 3 — Install the ADK and activate your environment
+
+Install the ADK:
+
+**Windows:**
+```bash
+pip install ibm-watsonx-orchestrate
+```
+
+**Mac:**
+```bash
+pip3 install ibm-watsonx-orchestrate
+```
+
+Add your environment — replace `<your-instance-url>` with the **Service instance URL** you copied in [Accessing Your Environment](#accessing-your-environment):
+
+```bash
+orchestrate env add -n EtisalatBootcamp -u <your-instance-url>
+```
+
+> `-n EtisalatBootcamp` is the name for this environment. You will use it every session.
+
+Activate the environment:
+
+```bash
+orchestrate env activate EtisalatBootcamp
+```
+
+When prompted, enter your **API key** and press Enter.
+
+---
+
+### 1.7 Import Knowledge Base Tool
+
+> 📌 This tool acts as the knowledge base for the agent — it connects directly to Milvus and retrieves the full postpaid plan catalogue deterministically, replacing a conversational knowledge base lookup.
+
+This step imports `get_postpaid_plans` — a Python tool that queries the Milvus plans database and returns the full plan catalogue.
+
+---
+
+#### Step 1 — Create the tool file
+
+Go into your `etisalat-bootcamp` folder in VS Code and create a new file:
+
+```
+File → New File → name it: get_postpaid_plans.py
+```
+
+Paste this code:
+
+```python
+"""Deterministic postpaid-plan lookup for the e& eligibility demo.
+
+Queries the Client Engineering Milvus instance (161.156.199.100:8080, gRPC+TLS)
+directly and returns the full plan catalogue as JSON.
+"""
+
+import json
+import os
+import tempfile
+
+from ibm_watsonx_orchestrate.agent_builder.tools import tool
+
+_MILVUS_HOST = "161.156.199.100"
+_MILVUS_PORT = "8080"
+_MILVUS_USER = "root"
+_MILVUS_PASSWORD = "YourStrongPassword123!"
+
+_CA_PEM = """-----BEGIN CERTIFICATE-----
+MIIDojCCAoqgAwIBAgIUfQBXSJmqkgsZvf89eYCcQ2H7epMwDQYJKoZIhvcNAQEL
+BQAwWDELMAkGA1UEBhMCR0IxGzAZBgNVBAoMEkNsaWVudCBFbmdpbmVlcmluZzES
+MBAGA1UECwwJQVMgYW5kIFBXMRgwFgYDVQQDDA8xNjEuMTU2LjE5OS4xMDEwHhcN
+MjYwNzAxMTEzNzAyWhcNMzYwNjI4MTEzNzAyWjBYMQswCQYDVQQGEwJHQjEbMBkG
+A1UECgwSQ2xpZW50IEVuZ2luZWVyaW5nMRIwEAYDVQQLDAlBUyBhbmQgUFcxGDAW
+BgNVBAMMDzE2MS4xNTYuMTk5LjEwMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAJMBSYTKpiQ3vKyrf7DM9fAlSuT04DbVtkOpSxE6PStk9zD/G590Hy7f
+sIwp4HAn1Wmhqm+/REX0+9dlnQSz2t5bfVPnTIcX+kAVNd2b4hKN9Ckblw962Ltu
+1dq4aDYtcyXPUQrK4C8qr4yPSvxTw5T+vIBvCHmejcHzNvtMLeYLuVlNvxf6Dq93
+d18T6iVZ9yzqcwm9+AqImFSM1qjDqukkxd0/ytcMXdnh1FYxnrzONG0EgUiJlqHA
+1gTMAqaZjRDr7FMrf5GWEWe9knmx86aIdoySfJZpzTxFdXbTvIJYvy2iwZcrtwl5
+dw6ZNltdAJZgJNcMYhOrdiO+dEMRLXECAwEAAaNkMGIwHQYDVR0OBBYEFDPWdPwn
+yJFyj5D/RGK4dX3lohn+MB8GA1UdIwQYMBaAFDPWdPwnyJFyj5D/RGK4dX3lohn+
+MA8GA1UdEwEB/wQFMAMBAf8wDwYDVR0RBAgwBocEoZzHZDANBgkqhkiG9w0BAQsF
+AAOCAQEAURZHbiPZuOJBJOEXuBb1h5nTiwBBqleJLrmkjFZr5nE6jFxSZS1htqu0
+BVT8vLnFq1NwRiAZn5jYvkJsEunZCOxmoZIampwAT4MoM4rZwr0/yiylpRzKyFkb
+eTXgHPJoFJquOamIuVAl7jSHzVS8G759clNEch+5fsl388LdjkzPygOBLyg8I8Jn
+QuI2Nqp45KMFnVGybk3Di/DQ3Qv1EYYCPfAqiEKRqm/C0AF3jSerVsNna5DrQvo9
+GmZN7oL7WEzTwqAFYDF/+JXIwaxiML0+bu5LDgeIcJ4Et4Atb5zsUKCUGBx/Bm6R
+RWrrFm6Z2Q5u3KuIlvPmDEQ+cWtFXQ==
+-----END CERTIFICATE-----
+"""
 
 
-Click **Add knowledge**.
+@tool(name="get_postpaid_plans_<your_last_name>")
+def get_postpaid_plans() -> str:
+    """Retrieve the complete, authoritative postpaid plan catalogue from the plans database.
+
+    Returns every available postpaid plan with its plan name, minimum salary
+    requirement (AED), monthly rental (AED) and credit limit (AED), as a JSON
+    string. Always call this tool to obtain the plan list when checking which
+    plans a customer is eligible for — the data is exact and complete.
+    """
+    from pymilvus import Collection, connections
+
+    pem = tempfile.NamedTemporaryFile("w", suffix=".pem", delete=False)
+    try:
+        pem.write(_CA_PEM)
+        pem.close()
+        connections.connect(
+            alias="plans",
+            host=_MILVUS_HOST,
+            port=_MILVUS_PORT,
+            secure=True,
+            server_pem_path=pem.name,
+            user=_MILVUS_USER,
+            password=_MILVUS_PASSWORD,
+        )
+        col = Collection("postpaid_plans", using="plans")
+        col.load()
+        rows = col.query(
+            expr="tier >= 0",
+            output_fields=["plan_name", "min_salary_aed", "rental_aed", "credit_limit_aed"],
+        )
+        plans = [
+            {
+                "plan": r["plan_name"],
+                "min_salary_aed": int(r["min_salary_aed"]),
+                "monthly_rental_aed": int(r["rental_aed"]),
+                "credit_limit_aed": int(r["credit_limit_aed"]),
+            }
+            for r in sorted(rows, key=lambda r: r["rental_aed"])
+        ]
+        return json.dumps({"plans": plans})
+    except Exception as exc:
+        return json.dumps({"error": f"{type(exc).__name__}: {exc}"})
+    finally:
+        os.unlink(pem.name)
+```
+
+> ⚠️ Go to **line 19** and replace `<your_last_name>` with your last name.
+> **Example:** `name="get_postpaid_plans_ahmed"`
+
+Then save the file (`Ctrl+S` / `Cmd+S`).
+
+---
+
+#### Step 2 — Create the requirements file
+
+```
+File → New File → name it: requirements_kb.txt
+```
+
+Paste and save:
+
+```
+ibm-watsonx-orchestrate==2.5.1
+pymilvus==2.6.1
+```
+
+Your folder should now look like:
+
+```
+etisalat-bootcamp/
+├── get_postpaid_plans.py
+└── requirements_kb.txt
+```
+
+---
+
+#### Step 3 — Import the tool
+
+In your terminal:
+
+```bash
+orchestrate tools import --kind python -r requirements_kb.txt -f get_postpaid_plans.py
+```
+
+Verify the tool was imported — go to your browser:
+
+```
+☰ Hamburger menu → Build → All Tools → get_postpaid_plans_<your_last_name>
+```
+
+If it appears in the list, the tool is ready. ✅
+
+---
+
+#### Step 4 — Add the tool to document_agent
+
+```
+☰ Hamburger menu → Build → All Agents → document_agent_<your_last_name>
+```
+
+Click the **Toolset** tab → **Add tool** → **Local instance** → select `get_postpaid_plans_<your_last_name>` → **Add**.
 
 ---
 
@@ -784,11 +991,9 @@ This step is done outside the browser in VS Code and a terminal.
 
 #### Step 1 — Open your IDE
 
-Open **VS Code**. Create a new folder on your desktop called `etisalat-bootcamp`.
+Open **VS Code** and go into your existing `etisalat-bootcamp` folder (already created in [Part 1, Section 1.6](#16-set-up-your-ide-and-adk-environment)).
 
-```
-File → Open Folder → select etisalat-bootcamp
-```
+> Your ADK environment is already set up and activated — no need to repeat those steps.
 
 ---
 
@@ -936,49 +1141,7 @@ etisalat-bootcamp/
 
 ---
 
-#### Step 4 — Open the terminal in VS Code
-
-```
-Terminal → New Terminal
-```
-
-A terminal panel opens at the bottom of VS Code pointing to your `etisalat-bootcamp` folder.
-
----
-
-#### Step 5 — Install the ADK and activate your environment
-
-Install the ADK:
-
-**Windows:**
-```bash
-pip install ibm-watsonx-orchestrate
-```
-
-**Mac:**
-```bash
-pip3 install ibm-watsonx-orchestrate
-```
-
-Add your environment — replace `<your-instance-url>` with the **Service instance URL** you copied in [Accessing Your Environment](#accessing-your-environment):
-
-```bash
-orchestrate env add -n EtisalatBootcamp -u <your-instance-url>
-```
-
-> `-n EtisalatBootcamp` is the name for this environment. You will use it every session.
-
-Activate the environment:
-
-```bash
-orchestrate env activate EtisalatBootcamp
-```
-
-When prompted, enter your **API key** and press Enter.
-
----
-
-#### Step 6 — Import the tool
+#### Step 4 — Import the tool
 
 ```bash
 orchestrate tools import --kind python -r requirements.txt -f create_payment_link.py
