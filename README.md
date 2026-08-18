@@ -456,7 +456,7 @@ For each field, click the **⋮ three-dot menu** → **Edit** to set its type an
 | Field name | Type | Description |
 |---|---|---|
 | `Employee Name` | string | Extract the employee's full name exactly as written in the payslip, usually found next to the label "Employee Name" or "Name" |
-| `gross salary` | string | Extract the gross salary amount from the payslip exactly as shown next to "Gross Salary". Return only the numeric value without currency symbols or commas. |
+| `gross salary` | string | Extract the gross salary amount from the payslip exactly as shown next to "Gross Salary". Return only the numeric value without currency symbols or commas. specifically look at the gross salary section|
 
 <details>
 <summary> <strong>💡 Optional — Map the document Source (click to expand) </strong> </summary>
@@ -1371,7 +1371,7 @@ On the Master Agent page, click the **refresh button** on the top left of the ag
 ```
 Check my postpaid plan eligibility
 ```
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/92ce842a-acca-48e2-b305-df498a2675df" />
+<img width="849" height="778" alt="image" src="https://github.com/user-attachments/assets/ca2516ef-fc9c-4fb3-9bba-119c849838d7" />
 
 > Using training documents: `EID_Train.png` + `Payslip_Train.png`
 
