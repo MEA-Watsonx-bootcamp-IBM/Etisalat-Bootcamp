@@ -243,9 +243,8 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 ```
 ☰ Hamburger menu → Build → Create Agent → From scratch
 ```
-
-<img width="1112" height="637" alt="image" src="https://github.com/user-attachments/assets/2d34c1e0-0139-418f-84f8-97f134658c58" />
-<img width="1339" height="767" alt="image" src="https://github.com/user-attachments/assets/e2c5c75a-2f67-4b9a-9653-4ca1e9b0d71b" />
+<img width="1237" height="701" alt="image" src="https://github.com/user-attachments/assets/e6cf751f-bd77-4b52-87d2-1f031e984354" />
+<img width="1311" height="732" alt="image" src="https://github.com/user-attachments/assets/112dfb9f-9ae8-4c12-8b76-2f532fc5260a" />
 
 
 | Field | Value |
@@ -257,7 +256,7 @@ Click **Create**.
 
 Under **Style** select `React Core`.
 
-<img width="987" height="382" alt="image" src="https://github.com/user-attachments/assets/6339fa9f-3715-4f84-87de-e155e50c2896" />
+<img width="682" height="731" alt="image" src="https://github.com/user-attachments/assets/02dc153b-aa04-4a47-bdac-9a112769a3c4" />
 
 ---
 
@@ -322,8 +321,8 @@ Do not show any reasoning, intermediate steps, retrieval results, plan counts, o
 
 Click the **Toolset** tab on the right side menu → Click **Add tool** → Select **Agentic Workflow**.
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/a600fb02-69be-45ca-8a5d-bfabeece3335" />
-<img width="1188" height="757" alt="image" src="https://github.com/user-attachments/assets/3fc0fab4-fce3-4997-99b3-807f2943f64b" />
+<img width="1332" height="706" alt="image" src="https://github.com/user-attachments/assets/f73dc1ba-c4bc-428e-9ed4-790de975eaf2" />
+<img width="891" height="728" alt="image" src="https://github.com/user-attachments/assets/e032c9d3-c052-4923-ae3b-a84beb8687ec" />
 
 When prompted, enter a name for the workflow:
 
