@@ -1,0 +1,19 @@
+name: "📝 Generate my personalized README"
+description: "Enter your last name and submit — a README_<your_last_name>.md will be created for you in this repo."
+title: "README request"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit this form and within about a minute a personalized copy of the lab guide
+        (`README_<your_last_name>.md`) will be committed to the repository, with
+        `<your_last_name>` already replaced everywhere. A comment with a direct link
+        will be posted here when it is ready, and this issue will close automatically.
+  - type: input
+    id: last_name
+    attributes:
+      label: Last name
+      description: "Lowercase letters/numbers only — it will be used in your agent and tool names"
+      placeholder: "ahmed"
+    validations:
+      required: true

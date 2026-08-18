@@ -6,6 +6,19 @@
 >
 > **Goal:** By the end of this lab, you will have built, deployed, and tested an AI Agentic workflow for Postpaid Plan Eligibility Use case on watsonx Orchestrate — a 3-agent pipeline that reads Emirates ID and payslip documents, validates eligibility requirements, recommends eligible plan tiers, and processes payment via Stripe payment gateway.
 
+<!-- generator-start -->
+## 🪪 Get Your Personalized Lab Guide
+
+This guide uses `<your_last_name>` placeholders in agent and tool names. Click the button below to get your own copy with your last name already filled in everywhere:
+
+[![Generate my README](https://img.shields.io/badge/%F0%9F%93%9D%20Generate%20my%20README-2ea44f?style=for-the-badge&logo=github&logoColor=white)](../../issues/new?template=generate-readme.yml)
+
+1. Click the button, type your **last name** in the text box, and press **Submit new issue**.
+2. Within about a minute, `README_<your_last_name>.md` is committed to this repository and a direct link is posted back on your request, which then closes automatically.
+
+> Maintainers can also generate one from the [Actions tab](../../actions/workflows/generate-readme.yml): **Run workflow** → enter the last name → **Run workflow**.
+<!-- generator-end -->
+
 ---
 
 ## Use Case Overview

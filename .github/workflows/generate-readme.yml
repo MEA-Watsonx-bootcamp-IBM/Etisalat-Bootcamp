@@ -1,0 +1,105 @@
+name: Generate personalized README
+
+on:
+  workflow_dispatch:
+    inputs:
+      last_name:
+        description: "Your last name (lowercase letters/numbers, e.g. ahmed)"
+        required: true
+        type: string
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+# Serialize runs so simultaneous requests don't race on git push
+concurrency:
+  group: generate-readme
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    # Run for the manual dispatch, or for issues created via the
+    # "Generate my personalized README" issue form (identified by its field heading)
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.body, '### Last name')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Extract and sanitize last name
+        id: name
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_NAME: ${{ github.event.inputs.last_name }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python3 - <<'EOF'
+          import os, re
+          if os.environ["EVENT_NAME"] == "workflow_dispatch":
+              raw = os.environ.get("INPUT_NAME", "")
+          else:
+              m = re.search(r"### Last name\s*\n+([^\n]+)", os.environ.get("ISSUE_BODY", ""))
+              raw = m.group(1).strip() if m else ""
+          # keep it safe for filenames, agent names and tool names
+          name = re.sub(r"[^a-z0-9_-]", "", raw.strip().lower().replace(" ", "_"))
+          if not name:
+              print("::error::Could not read a valid last name (use letters/numbers, e.g. ahmed).")
+              raise SystemExit(1)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"last_name={name}\n")
+          EOF
+
+      - name: Build README_<last_name>.md
+        env:
+          LAST_NAME: ${{ steps.name.outputs.last_name }}
+        run: |
+          python3 - <<'EOF'
+          import os, re
+          name = os.environ["LAST_NAME"]
+          src = open("README.md", encoding="utf-8").read()
+          # drop the generator-button section from the personalized copy
+          src = re.sub(r"<!-- generator-start -->.*?<!-- generator-end -->\s*", "", src, flags=re.S)
+          open(f"README_{name}.md", "w", encoding="utf-8").write(src.replace("<your_last_name>", name))
+          EOF
+
+      - name: Commit and push
+        env:
+          LAST_NAME: ${{ steps.name.outputs.last_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "README_${LAST_NAME}.md"
+          if git diff --cached --quiet; then
+            echo "README_${LAST_NAME}.md is already up to date."
+            exit 0
+          fi
+          git commit -m "Add personalized README for ${LAST_NAME}"
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase
+          done
+          git push
+
+      - name: Reply and close the request issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LAST_NAME: ${{ steps.name.outputs.last_name }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" \
+            --body "✅ Your personalized lab guide is ready: [README_${LAST_NAME}.md](https://github.com/${GITHUB_REPOSITORY}/blob/main/README_${LAST_NAME}.md)"
+          gh issue close "$ISSUE" --repo "$GITHUB_REPOSITORY"
+
+      - name: Report failure on the request issue
+        if: failure() && github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" \
+            --body "❌ Sorry, the README could not be generated. Please check that the last name uses only letters/numbers (e.g. \`ahmed\`) and submit a new request."
