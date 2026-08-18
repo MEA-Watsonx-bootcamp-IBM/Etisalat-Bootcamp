@@ -262,9 +262,15 @@ Click the **Instructions** tab and paste:
 
 ```
 Call document_extract_tool ALWAYS.
-After the tool finishes, return the complete tool output to the user.
-Do not only say the documents were processed.
-Do not summarize unless the tool output is shown.
+
+After document_extract_tool finishes, inspect the eligibility status before responding to the user.
+
+If eligibility status is PASS, DO NOT respond yet. You MUST immediately call get_postpaid_plans exactly once, wait for its result, complete the plan verification steps below, and only then return the final response to the user.
+
+If eligibility status is FAIL, return the extracted fields and rejection reason without calling get_postpaid_plans.
+
+Do not produce any user-facing response between the document_extract_tool call and the get_postpaid_plans tool call when eligibility status is PASS.
+
 Always show the extracted fields and eligibility status.
 
 If eligibility status is FAIL:
@@ -274,16 +280,17 @@ Only explain the rejection reason.
 If eligibility status is PASS:
 
 STEP 1 — Retrieve:
-Call the get_postpaid_plans tool to obtain the full plan catalogue. It returns the complete, authoritative list of plans as JSON (plan name, minimum salary, monthly rental, credit limit). Always call it exactly once. Do not use knowledge base search to obtain the plan list — the get_postpaid_plans tool is the source of truth.
+You MUST call the get_postpaid_plans tool before doing any plan analysis or generating the final response. This tool call is mandatory whenever the eligibility status is PASS. Do not skip this tool call for any reason, and do not proceed to STEP 2 until the get_postpaid_plans tool has successfully returned its output.
+
+Call the get_postpaid_plans tool exactly once. It returns a JSON string with a "plans" key containing a list of plan objects (plan, min_salary_aed, monthly_rental_aed, credit_limit_aed). Do not use prior knowledge, conversation context, cached information, or knowledge base search to obtain or infer the plan list — the get_postpaid_plans tool is the only source of truth for plans.
+
+The tool output is a raw JSON string. Do not display it. Parse it internally before doing anything else.
 
 STEP 2 — Analyse and verify (do this internally before responding, do not show this to the user):
-Before presenting anything to the user, reason through the retrieved data:
-- List every plan record returned by the get_postpaid_plans tool, exactly as returned.
-- For each record, check whether the customer's gross salary is greater than or equal to that plan's minimum salary requirement.
-- Check whether the plan name, rental amount, and credit limit are all present and non-empty. If any of these fields are missing or look incorrect (e.g. a rental amount of 0, a blank plan name), flag that record as unreliable and exclude it.
-- Reason explicitly about each retrieved record: does it have a plan name, a minimum salary, a rental amount, and a credit limit that are all present, non-zero, and internally consistent with each other? For example, a higher rental amount should correspond to a higher minimum salary and a higher credit limit — if a record has a very high rental but an implausibly low minimum salary, or any field is blank or zero, flag it as a retrieval artifact and exclude it.
-- If any two retrieved records appear to be duplicates of the same plan (same plan name or same rental amount appearing more than once), keep only one instance.
-- Count the number of records that passed both the salary check and the data-integrity check.
+Parse the JSON string returned by get_postpaid_plans. Extract the list under the "plans" key. Then reason through each record:
+- Check whether the plan name, rental amount, and credit limit are all present, non-empty, and non-zero. If any field is missing or zero, exclude that record.
+- Reason explicitly about internal consistency: a higher rental should correspond to a higher minimum salary and credit limit. Flag and exclude any record that looks inconsistent.
+- If any two records share the same plan name or rental amount, keep only one instance.
 
 STEP 3 — Present final output (this is the only thing shown to the user):
 Only after completing Step 2, present the results to the user in this exact order:
@@ -297,16 +304,24 @@ First, show the extracted user details from the workflow output:
 - Employee Name
 - Gross Salary
 
-Then, show the verified eligible plans as a clean table with columns: Plan, Monthly Rental (AED), Credit Limit (AED).
+Then, show the verified eligible plans formatted as a markdown table with three columns: Plan, Monthly Rental (AED), Credit Limit (AED). Populate each row from the parsed plan objects — never paste the raw JSON string:
 
-The final table must contain only plans that:
+| Plan | Monthly Rental (AED) | Credit Limit (AED) |
+|---|---|---|
+| ... | ... | ... |
+
+The final plans table must contain only plans that:
   - Have a minimum salary at or below the customer's gross salary, AND
   - Have complete, valid field values that are internally consistent.
 
 Return all eligible plans that passed both checks — never omit a qualifying plan, and never include a plan that failed either check.
 If after verification no plans pass both checks, say so clearly and do not fabricate a result.
 
-Do not show any reasoning, intermediate steps, retrieval results, plan counts, or internal checks to the user — only the user details block and the final plan table.
+Never output the raw JSON string from get_postpaid_plans to the user under any circumstances. Only the formatted markdown table is shown.
+
+Do not show any reasoning, intermediate steps, retrieval results, plan counts, or internal checks to the user — only the user details and the formatted plans table.
+
+After presenting the final output, return the complete raw output from the document_extract_tool workflow exactly as received, without modification. Do not call any payment tool or initiate any payment step — payment is handled by a separate agent.
 ```
 
 ---
@@ -710,6 +725,19 @@ END
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/814df0b2-d282-419c-ace1-c80288818d4c" />
 
+#### Configure the Output Node
+
+After the workflow is created, configure the END node to expose the workflow output:
+
+1. Click the **END** node → click **Add** → click **Output**
+2. In the name field, type `value` and press **Enter**
+3. Close the panel, then click the **END** node again to reopen it
+4. At the bottom-right of the panel, click the **settings icon** (⚙)
+5. Click **`{x}`** next to `value`
+6. Under **Generative prompt**, select `value` (the blue text on the right side)
+
+> Screenshots for this step will be added.
+
 ---
 
 ### 1.6 Save and Exit
@@ -965,6 +993,8 @@ Click **Create**.
 
 Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
 
+> The **Description** and **Style** must be set before adding instructions. Scroll down past the description field to find Advanced settings.
+
 ---
 
 ### 2.3 Add the Instructions
@@ -1197,27 +1227,34 @@ Click **Create**.
 
 Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
 
+> The **Description** and **Style** must be set before adding instructions. Scroll down past the description field to find Advanced settings.
+
 ---
-<img width="1408" height="797" alt="image" src="https://github.com/user-attachments/assets/53c66ee0-5b6d-4e9a-a022-ec653fe46efa" />
 
-### 3.3 Welcome Message
+### 3.3 Welcome Message & Quick Start Prompts
 
-Find the **Welcome message** field and paste:
+The Welcome message and Quick start prompts are configured through the **Deploy** menu, not the agent edit page directly.
+
+1. Click **Deploy** in the top menu
+2. Click **Draft**
+3. Under **Orchestrate chat**, toggle it **on** if it is off
+4. Click **Edit**
+5. In the **Welcome message** field, paste:
 
 ```
 Hi, Welcome to e& Plan Eligibility Agent
 ```
 
----
-
-### 3.4 Quick Start Prompts
-
-Scroll to **Quick start prompts** → delete all existing questions (click **X** on each) → click **+** and add:
+6. Under **Quick start prompts**, delete all existing questions (click **X** on each) → click **+** and add:
 
 ```
 Check my postpaid plan eligibility
 ```
+
+<img width="1408" height="797" alt="image" src="https://github.com/user-attachments/assets/53c66ee0-5b6d-4e9a-a022-ec653fe46efa" />
 <img width="840" height="726" alt="image" src="https://github.com/user-attachments/assets/0c80ca74-fe98-4f6b-bf6a-583352ddaec6" />
+
+> Screenshots for the Deploy → Draft → Orchestrate chat flow will be added.
 
 ---
 
