@@ -260,8 +260,6 @@ Click **Create**.
 
 Click the **Instructions** tab and paste:
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
-
 ```
 Call document_extract_tool ALWAYS.
 After the tool finishes, return the complete tool output to the user.
