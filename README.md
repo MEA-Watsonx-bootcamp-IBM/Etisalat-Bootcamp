@@ -730,7 +730,8 @@ END
 After the workflow is created, configure the END node to expose the workflow output:
 
 1. Click the **END** node → click **Add** → click **Output**
-2. In the name field, type `value` and press **Enter**
+2. Select type **String**
+3. In the name field, type `value` and click **Apply**
 3. Close the panel, then click the **END** node again to reopen it
 4. At the bottom-right of the panel, click the **settings icon** (⚙)
 5. Click **`{x}`** next to `value`
