@@ -586,8 +586,6 @@ Click **+** between Node 5 and END → select **Add a flow activity → Generati
 
 Click on the node to open its configuration panel.
 
-> **Rename:** `Generative prompt`
-
 <img width="880" alt="image" src="https://github.com/user-attachments/assets/636afa32-e1e6-4b40-a1b3-02dc64455451" />
 
 **Input variables** — click the **Input variables** tab → **Add variable**:
