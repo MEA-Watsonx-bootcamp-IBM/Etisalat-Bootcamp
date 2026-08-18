@@ -900,7 +900,6 @@ File → New File → name it: requirements_kb.txt
 Paste and save:
 
 ```
-ibm-watsonx-orchestrate==2.5.1
 pymilvus==2.6.1
 ```
 
