@@ -738,6 +738,13 @@ After the workflow is created, configure the END node to expose the workflow out
 
 > Screenshots for this step will be added.
 
+#### Enable Agent Summarisation
+
+1. Click the **settings icon** (⚙) at the top of the canvas, next to the workflow name
+2. A panel opens on the right side — toggle **Agent summarisation** on
+
+> Screenshots for this step will be added.
+
 ---
 
 ### 1.6 Save and Exit
@@ -1219,46 +1226,9 @@ Click the **Toolset** tab on the left side menu → **Add tool** → **Local ins
 | Name | `Postpaid Eligibility Agent_<your_last_name> (eg: Postpaid_Eligibility_Agent_ahmed)`|
 | Description | Helps users check eligibility for postpaid plans and complete sign-up. Collects Emirates ID and payslip, verifies identity and income requirements, recommends eligible plan tiers, and processes payment for the plan the user selects. |
 
-Click **Create**.
-
 ---
 
-### 3.2 Verify Agent Style
-
-Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
-
-> The **Description** and **Style** must be set before adding instructions. Scroll down past the description field to find Advanced settings.
-
----
-
-### 3.3 Welcome Message & Quick Start Prompts
-
-The Welcome message and Quick start prompts are configured through the **Deploy** menu, not the agent edit page directly.
-
-1. Click **Deploy** in the top menu
-2. Click **Draft**
-3. Under **Orchestrate chat**, toggle it **on** if it is off
-4. Click **Edit**
-5. In the **Welcome message** field, paste:
-
-```
-Hi, Welcome to e& Plan Eligibility Agent
-```
-
-6. Under **Quick start prompts**, delete all existing questions (click **X** on each) → click **+** and add:
-
-```
-Check my postpaid plan eligibility
-```
-
-<img width="1408" height="797" alt="image" src="https://github.com/user-attachments/assets/53c66ee0-5b6d-4e9a-a022-ec653fe46efa" />
-<img width="840" height="726" alt="image" src="https://github.com/user-attachments/assets/0c80ca74-fe98-4f6b-bf6a-583352ddaec6" />
-
-> Screenshots for the Deploy → Draft → Orchestrate chat flow will be added.
-
----
-
-### 3.5 Add the Instructions
+### 3.2 Add the Instructions
 
 Click the **Instructions** tab and paste:
 
@@ -1346,7 +1316,42 @@ MANDATORY:
 
 ---
 
-### 3.6 Add Sub-Agents
+### 3.3 Verify Agent Style
+
+Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
+
+> The **Description** and **Style** must be set before adding instructions. Scroll down past the description field to find Advanced settings.
+
+---
+
+### 3.4 Welcome Message & Quick Start Prompts
+
+The Welcome message and Quick start prompts are configured through the **Deploy** menu, not the agent edit page directly.
+
+1. Click **Deploy** in the top menu
+2. Click **Draft**
+3. Under **Orchestrate chat**, toggle it **on** if it is off
+4. Click **Edit**
+5. In the **Welcome message** field, paste:
+
+```
+Hi, Welcome to e& Plan Eligibility Agent
+```
+
+6. Under **Quick start prompts**, delete all existing questions (click **X** on each) → click **+** and add:
+
+```
+Check my postpaid plan eligibility
+```
+
+<img width="1408" height="797" alt="image" src="https://github.com/user-attachments/assets/53c66ee0-5b6d-4e9a-a022-ec653fe46efa" />
+<img width="840" height="726" alt="image" src="https://github.com/user-attachments/assets/0c80ca74-fe98-4f6b-bf6a-583352ddaec6" />
+
+> Screenshots for the Deploy → Draft → Orchestrate chat flow will be added.
+
+---
+
+### 3.5 Add Sub-Agents
 
 Click the **Toolset** tab on the right side menu → scroll down to the **Agents** section → **Add agents** → **Local instance** → select:
 
