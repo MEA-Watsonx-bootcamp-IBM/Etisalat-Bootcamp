@@ -1198,6 +1198,7 @@ Click **Create**.
 Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
 
 ---
+<img width="1408" height="797" alt="image" src="https://github.com/user-attachments/assets/53c66ee0-5b6d-4e9a-a022-ec653fe46efa" />
 
 ### 3.3 Welcome Message
 
@@ -1216,6 +1217,7 @@ Scroll to **Quick start prompts** → delete all existing questions (click **X**
 ```
 Check my postpaid plan eligibility
 ```
+<img width="840" height="726" alt="image" src="https://github.com/user-attachments/assets/0c80ca74-fe98-4f6b-bf6a-583352ddaec6" />
 
 ---
 
