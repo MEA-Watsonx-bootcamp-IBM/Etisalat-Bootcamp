@@ -256,9 +256,9 @@ Click **Create**.
 
 ---
 
-### 1.2 Add the Behaviour
+### 1.2 Add the Instructions
 
-Click the **Behaviour** tab and paste:
+Click the **Instructions** tab and paste:
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/2352bb0f-667e-4f2b-8244-720ad60405ee" />
 
@@ -962,13 +962,17 @@ Click the **Tool** tab → **Add tool** → **Local instance** → select `get_p
 
 Click **Create**.
 
-Under **Style** select `React Core`.
+---
+
+### 2.2 Verify Agent Style
+
+Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
 
 ---
 
-### 2.2 Add the Behaviour
+### 2.3 Add the Instructions
 
-Click the **Behaviour** tab and paste:
+Click the **Instructions** tab and paste:
 
 ```
 You handle payment collection once a user has selected a postpaid plan.
@@ -989,7 +993,7 @@ Never paste the raw URL as plain visible text outside the markdown link syntax �
 
 ---
 
-### 2.3 Setup — Import the Payment Tool
+### 2.4 Setup — Import the Payment Tool
 
 This step is done outside the browser in VS Code and a terminal.
 
@@ -1165,7 +1169,7 @@ If `create_payment_link` appears in the list, the tool is ready. ✅
 
 ---
 
-### 2.4 Add the Tool in the UI
+### 2.5 Add the Tool in the UI
 
 ```
 ☰ Hamburger menu → Build → All Agents → payment_agent
@@ -1190,11 +1194,15 @@ Click the **Toolset** tab on the left side menu → **Add tool** → **Local ins
 
 Click **Create**.
 
-Under **Style** select `React Core`.
+---
+
+### 3.2 Verify Agent Style
+
+Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
 
 ---
 
-### 3.2 Welcome Message
+### 3.3 Welcome Message
 
 Find the **Welcome message** field and paste:
 
@@ -1204,7 +1212,7 @@ Hi, Welcome to e& Plan Eligibility Agent
 
 ---
 
-### 3.3 Quick Start Prompts
+### 3.4 Quick Start Prompts
 
 Scroll to **Quick start prompts** → delete all existing questions (click **X** on each) → click **+** and add:
 
@@ -1214,9 +1222,9 @@ Check my postpaid plan eligibility
 
 ---
 
-### 3.4 Add the Behaviour
+### 3.5 Add the Instructions
 
-Click the **Behaviour** tab and paste:
+Click the **Instructions** tab and paste:
 
 ```
 You are the Postpaid Plan Eligibility assistant.
@@ -1302,7 +1310,7 @@ MANDATORY:
 
 ---
 
-### 3.5 Add Sub-Agents
+### 3.6 Add Sub-Agents
 
 Click the **Toolset** tab on the right side menu → scroll down to the **Agents** section → **Add agents** → **Local instance** → select:
 
