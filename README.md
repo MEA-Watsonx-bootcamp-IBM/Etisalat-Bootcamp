@@ -736,14 +736,16 @@ After the workflow is created, configure the END node to expose the workflow out
 5. Click **`{x}`** next to `value`
 6. Under **Generative prompt**, select `value` (the blue text on the right side)
 
-> Screenshots for this step will be added.
+<img width="1153" height="594" alt="image" src="https://github.com/user-attachments/assets/a401d60a-06e5-4311-b3d3-a76932e6bd5d" />
+<img width="1357" height="698" alt="image" src="https://github.com/user-attachments/assets/90eb6354-58f3-442a-912b-0170faa330ae" />
+
 
 #### Enable Agent Summarisation
 
 1. Click the **settings icon** (⚙) at the top of the canvas, next to the workflow name
 2. A panel opens on the right side — toggle **Agent summarisation** on
 
-> Screenshots for this step will be added.
+<img width="1301" height="606" alt="image" src="https://github.com/user-attachments/assets/e3e4efe0-522d-4fb5-a7b8-916df89aa2cf" />
 
 ---
 
