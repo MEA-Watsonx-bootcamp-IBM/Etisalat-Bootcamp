@@ -254,10 +254,6 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 
 Click **Create**.
 
-Under **Style** select `React Core`.
-
-<img width="682" height="731" alt="image" src="https://github.com/user-attachments/assets/02dc153b-aa04-4a47-bdac-9a112769a3c4" />
-
 ---
 
 ### 1.2 Add the Behaviour
@@ -317,9 +313,17 @@ Do not show any reasoning, intermediate steps, retrieval results, plan counts, o
 
 ---
 
-### 1.3 Create the Agentic Workflow
+### 1.3 Verify Agent Style
 
-Click the **Toolset** tab on the right side menu → Click **Add tool** → Select **Agentic Workflow**.
+Scroll down on the agent page → click **Advanced settings** → confirm **Style** is set to `React Core`. If not, click the dropdown and select it.
+
+<img width="682" height="731" alt="image" src="https://github.com/user-attachments/assets/02dc153b-aa04-4a47-bdac-9a112769a3c4" />
+
+---
+
+### 1.4 Create the Agentic Workflow
+
+In the top menu, click **Add tool** → Select **Agentic Workflow**.
 
 <img width="1332" height="706" alt="image" src="https://github.com/user-attachments/assets/f73dc1ba-c4bc-428e-9ed4-790de975eaf2" />
 <img width="891" height="728" alt="image" src="https://github.com/user-attachments/assets/e032c9d3-c052-4923-ae3b-a84beb8687ec" />
@@ -337,7 +341,7 @@ Click **start building**. This opens the workflow canvas.
 
 ---
 
-### 1.4 Build the Workflow
+### 1.5 Build the Workflow
 
 #### Node 1 & 2 — Collect from User (File Upload)
 
@@ -710,13 +714,13 @@ END
 
 ---
 
-### 1.5 Save and Exit
+### 1.6 Save and Exit
 
 Click **Done** (top-right) to return to the agent page.
 
 ---
 
-### 1.6 Set Up Your IDE and ADK Environment
+### 1.7 Set Up Your IDE and ADK Environment
 
 Before importing any tools, set up VS Code and activate your Orchestrate environment. You only need to do this once — it covers both the knowledge base tool and the payment tool.
 
@@ -774,7 +778,7 @@ When prompted, enter your **API key** and press Enter.
 
 ---
 
-### 1.7 Import Knowledge Base Tool
+### 1.8 Import Knowledge Base Tool
 
 > 📌 This tool acts as the knowledge base for the agent — it connects directly to Milvus and retrieves the full postpaid plan catalogue deterministically, replacing a conversational knowledge base lookup.
 
