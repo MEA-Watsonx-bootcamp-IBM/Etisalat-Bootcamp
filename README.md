@@ -765,6 +765,7 @@ Add your environment — replace `<your-instance-url>` with the **Service instan
 ```bash
 orchestrate env add -n EtisalatBootcamp -u <your-instance-url>
 ```
+<img width="1113" height="88" alt="image" src="https://github.com/user-attachments/assets/44bf0822-4add-40ea-a699-3ebfb7a66fd6" />
 
 > `-n EtisalatBootcamp` is the name for this environment. You will use it every session.
 
@@ -773,8 +774,8 @@ Activate the environment:
 ```bash
 orchestrate env activate EtisalatBootcamp
 ```
-
 When prompted, enter your **API key** and press Enter.
+<img width="1104" height="141" alt="image" src="https://github.com/user-attachments/assets/2fb5d1b8-5470-453b-924b-1e2ae9d5a9bd" />
 
 ---
 
@@ -922,6 +923,7 @@ In your terminal:
 ```bash
 orchestrate tools import --kind python -r requirements_kb.txt -f get_postpaid_plans.py
 ```
+<img width="1118" height="94" alt="image" src="https://github.com/user-attachments/assets/4b6b9eb2-20de-4a5b-b290-aaef7c62018e" />
 
 Verify the tool was imported — go to your browser:
 
@@ -939,7 +941,8 @@ If it appears in the list, the tool is ready. ✅
 ☰ Hamburger menu → Build → All Agents → document_agent_<your_last_name>
 ```
 
-Click the **Toolset** tab → **Add tool** → **Local instance** → select `get_postpaid_plans_<your_last_name>` → **Add**.
+Click the **Tool** tab → **Add tool** → **Local instance** → select `get_postpaid_plans_<your_last_name>` → **Add**.
+<img width="873" height="722" alt="image" src="https://github.com/user-attachments/assets/94d2e768-4076-4913-b9bf-82e413bae6e9" />
 
 ---
 
