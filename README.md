@@ -207,7 +207,7 @@ You will need these two values throughout the lab. Follow these steps to retriev
 6. Enter your **name** in the name field — leave all other fields as they are
 7. Click the button in the bottom-right corner — copy and save the generated API key
 
-> ⚠️ Save both values — you will need them in [Part 2, Step 5](#step-5--install-the-adk-and-activate-your-environment)
+> ⚠️ Save both values — you will need them in [Step 3 — Install the ADK](#step-3--install-the-adk-and-activate-your-environment)
 
 | Credential | Where to find it |
 |---|---|
@@ -331,8 +331,10 @@ In the top menu, click **Add tool** → Select **Agentic Workflow**.
 When prompted, enter a name for the workflow:
 
 ```
-document_extract_tool
+document_extract_tool_<your_last_name>
 ```
+
+> ⚠️ Replace `<your_last_name>` with your last name. **Example:** `document_extract_tool_ahmed`
 
 Click **start building**. This opens the workflow canvas.
 
@@ -886,7 +888,7 @@ def get_postpaid_plans() -> str:
         os.unlink(pem.name)
 ```
 
-> ⚠️ Go to **line 19** and replace `<your_last_name>` with your last name.
+> ⚠️ Go to **line 43** and replace `<your_last_name>` with your last name.
 > **Example:** `name="get_postpaid_plans_ahmed"`
 
 Then save the file (`Ctrl+S` / `Cmd+S`).
@@ -1001,7 +1003,7 @@ This step is done outside the browser in VS Code and a terminal.
 
 #### Step 1 — Open your IDE
 
-Open **VS Code** and go into your existing `etisalat-bootcamp` folder (already created in [Part 1, Section 1.6](#16-set-up-your-ide-and-adk-environment)).
+Open **VS Code** and go into your existing `etisalat-bootcamp` folder (already created in [Part 1, Section 1.7](#17-set-up-your-ide-and-adk-environment)).
 
 > Your ADK environment is already set up and activated — no need to repeat those steps.
 
@@ -1160,10 +1162,10 @@ orchestrate tools import --kind python -r requirements.txt -f create_payment_lin
 Verify the tool was imported — go to your browser:
 
 ```
-☰ Hamburger menu → Build → All Tools → create_payment_link
+☰ Hamburger menu → Build → All Tools → create_payment_link_<your_last_name>
 ```
 
-If `create_payment_link` appears in the list, the tool is ready. ✅
+If `create_payment_link_<your_last_name>` appears in the list, the tool is ready. ✅
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/ce277f5e-b9f7-47a7-b33e-46fd4f513206" />
 
@@ -1172,10 +1174,10 @@ If `create_payment_link` appears in the list, the tool is ready. ✅
 ### 2.5 Add the Tool in the UI
 
 ```
-☰ Hamburger menu → Build → All Agents → payment_agent
+☰ Hamburger menu → Build → All Agents → payment_agent_<your_last_name>
 ```
 
-Click the **Toolset** tab on the left side menu → **Add tool** → **Local instance** → select `create_payment_link` → **Add**.
+Click the **Toolset** tab on the left side menu → **Add tool** → **Local instance** → select `create_payment_link_<your_last_name>` → **Add**.
 
 ---
 
