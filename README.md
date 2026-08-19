@@ -252,8 +252,6 @@ Three sets of Emirates ID and payslip documents are provided. Each has a specifi
 | Name | `document_agent_<your_last_name> (eg: document_agent_ahmed)`|
 | Description | Extracts structured information from uploaded Emirates ID documents and payslips for postpaid eligibility verification. Reads Emirates ID and extracts full name, ID number, date of birth, expiry date. Reads payslip and extracts employee name, company name, gross salary, pay period. Returns all extracted fields in structured format for downstream eligibility validation. |
 
-Click **Create**.
-
 ---
 
 ### 1.2 Add the Instructions
@@ -994,8 +992,6 @@ Click the **Tool** tab → **Add tool** → **Local instance** → select `get_p
 |---|---|
 | Name | `payment_agent_<your_last_name> (eg: payment_agent_ahmed)`|
 | Description | Handles payment collection for a postpaid plan the user has selected. Creates a Stripe test-mode checkout link for the chosen plan's monthly rental amount and shares it with the user to complete payment. |
-
-Click **Create**.
 
 ---
 
